@@ -46,6 +46,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/edittextback"
                 android:hint="Name"
+                android:paddingRight="15dp"
                 android:paddingLeft="15dp"
                 android:inputType="text"
                 android:id="@+id/nameInput"/>
@@ -55,6 +56,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittextback"
                 android:hint="Email Address"
+                android:paddingRight="15dp"
                 android:paddingLeft="15dp"
                 android:inputType="textEmailAddress"
                 android:id="@+id/emailInput"/>
@@ -64,6 +66,8 @@
                 android:background="@drawable/edittextback"
                 android:hint="Password"
                 android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+
                 android:layout_marginTop="10dp"
                 android:inputType="textPassword"
                 android:id="@+id/passInput"/>
@@ -109,12 +113,12 @@
                 android:id="@+id/phoneInput"/>
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:background="@drawable/edittextback"
                 android:hint="Address"
                 android:paddingLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:inputType="textPassword"
+                android:inputType="textMultiLine"
                 android:id="@+id/addressInput"/>
 
             <Button
