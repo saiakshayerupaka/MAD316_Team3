@@ -12,16 +12,22 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.models.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentRegister extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-
+    private FirebaseDatabase database;
+    private DatabaseReference mDatabase;
     private ImageView backbtn;
     private LinearLayout Step1,Step2;
     private Button next,signup;
@@ -33,6 +39,8 @@ public class StudentRegister extends AppCompatActivity {
         setContentView(R.layout.activity_student_register);
 
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference();
 
         Step1 = findViewById(R.id.Step1);
         Step2 = findViewById(R.id.Step2);
@@ -73,8 +81,15 @@ public class StudentRegister extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         FirebaseUser user = mAuth.getCurrentUser();
-                                        Toast.makeText(StudentRegister.this, "success",
-                                                Toast.LENGTH_SHORT).show();
+                                        Student student = new Student(nameInput.getText().toString(),user.getEmail(),idInput.getText().toString(),phoneInput.getText().toString(),addressInput.getText().toString());
+
+                                        database.getReference().child("Users").child(mAuth.getCurrentUser().getUid()).setValue(student).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(StudentRegister.this, "sucess",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Toast.makeText(StudentRegister.this, "Authentication failed."+task.getException(),
