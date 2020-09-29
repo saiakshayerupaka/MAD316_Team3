@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "813557041432",
+    "firebase_url": "https://lanbow-ede20.firebaseio.com",
+    "project_id": "lanbow-ede20",
+    "storage_bucket": "lanbow-ede20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813557041432:android:660ae75439f9584d76b66d",
+        "android_client_info": {
+          "package_name": "com.cegep.lanbow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813557041432-d3mc4b5jvvr802sjl3sdgp4r7lqnvfup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0rZJn7C5cv6pb8VGcFgrFR6PN4m3PAIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813557041432-d3mc4b5jvvr802sjl3sdgp4r7lqnvfup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

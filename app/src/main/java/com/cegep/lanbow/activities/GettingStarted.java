@@ -26,5 +26,19 @@ public class GettingStarted extends AppCompatActivity {
 
 
 
+        studentLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GettingStarted.this,StudentLogin.class));
+            }
+        });
+
+        studentRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GettingStarted.this,StudentRegister.class));
+            }
+        });
+
     }
 }
