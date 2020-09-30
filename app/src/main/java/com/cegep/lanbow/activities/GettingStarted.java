@@ -14,6 +14,7 @@ public class GettingStarted extends AppCompatActivity {
 
     private Button studentLogin;
     private TextView studentRegister;
+    private Button adminLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +24,26 @@ public class GettingStarted extends AppCompatActivity {
 
         studentLogin = findViewById(R.id.studentLogin);
         studentRegister = findViewById(R.id.studentRegister);
-
+        adminLogin = findViewById(R.id.adminLogin);
 
 
         studentLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GettingStarted.this,StudentLogin.class));
+                startActivity(new Intent(GettingStarted.this, StudentLogin.class));
             }
         });
 
         studentRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GettingStarted.this,StudentRegister.class));
+                startActivity(new Intent(GettingStarted.this, StudentRegister.class));
+            }
+        });
+        adminLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GettingStarted.this, AdminLogin.class));
             }
         });
 

@@ -3,11 +3,13 @@ package com.cegep.lanbow.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.cegep.lanbow.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +22,7 @@ public class StudentLogin extends AppCompatActivity {
     private ImageView backbtn;
     private FirebaseAuth mAuth;
 
-    private EditText emailInput,passInput;
+    private EditText emailInput, passInput;
     private Button studentLogin;
 
     @Override
@@ -37,17 +39,16 @@ public class StudentLogin extends AppCompatActivity {
         studentLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signInWithEmailAndPassword(emailInput.getText().toString(),passInput.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(emailInput.getText().toString(), passInput.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-
-                        }
-                        else{
-
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(StudentLogin.this, UserHome.class));
+                        } else {
+                            Toast.makeText(StudentLogin.this, "Wrong credential", Toast.LENGTH_LONG).show();
                         }
                     }
-                })
+                });
 
             }
         });

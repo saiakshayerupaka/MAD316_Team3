@@ -41,7 +41,6 @@ public class StudentRegister extends AppCompatActivity implements Validator.Vali
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
-    private DatabaseReference mDatabase;
     private ImageView backbtn;
     private LinearLayout Step1,Step2;
     private Button next,signup;
@@ -54,7 +53,7 @@ public class StudentRegister extends AppCompatActivity implements Validator.Vali
     private EditText passInput;
 
     @NotEmpty(message = "Student id shouldn't be empty")
-    @Length(min = 8,max = 8,message = "Student Id should be 8 digit")
+    @Length(min = 7,max = 7,message = "Student Id should be 7 digit")
     private EditText idInput;
 
     @NotEmpty(message = "Phone number shouldn't be empty")
@@ -73,7 +72,6 @@ public class StudentRegister extends AppCompatActivity implements Validator.Vali
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        mDatabase = database.getReference();
 
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -165,6 +163,7 @@ public class StudentRegister extends AppCompatActivity implements Validator.Vali
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     startActivity(new Intent(StudentRegister.this,UserHome.class));
+                                    finish();
                                 }
                             });
                         } else {

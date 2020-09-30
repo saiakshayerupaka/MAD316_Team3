@@ -45,9 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edittextback"
-                android:hint="Email Address"
+                android:hint="Username"
                 android:paddingLeft="15dp"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:id="@+id/emailInput"/>
             <EditText
                 android:layout_width="match_parent"
@@ -66,7 +66,7 @@
                 android:background="@drawable/btnsecondary"
                 android:textColor="@color/colorPrimary"
                 android:text="Login"
-                android:id="@+id/studentLogin"/>
+                android:id="@+id/adminLogin"/>
         </LinearLayout>
     </LinearLayout>
 
