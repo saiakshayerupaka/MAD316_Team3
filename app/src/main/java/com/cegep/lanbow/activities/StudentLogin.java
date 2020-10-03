@@ -42,6 +42,9 @@ public class StudentLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            if(!mAuth.getCurrentUser().isEmailVerified()){
+                                mAuth.getCurrentUser().sendEmailVerification();
+                            }
                             startActivity(new Intent(StudentLogin.this, UserHome.class));
                         } else {
                             Toast.makeText(StudentLogin.this, "Wrong credential", Toast.LENGTH_LONG).show();
