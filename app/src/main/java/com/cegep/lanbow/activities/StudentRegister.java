@@ -157,6 +157,14 @@ public class StudentRegister extends AppCompatActivity implements Validator.Vali
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(StudentRegister.this, "Email Verification link Sent!!"+task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             Student student = new Student(nameInput.getText().toString(),user.getEmail(),idInput.getText().toString(),phoneInput.getText().toString(),addressInput.getText().toString());
 
                             database.getReference().child("Users").child(mAuth.getCurrentUser().getUid()).setValue(student).addOnSuccessListener(new OnSuccessListener<Void>() {

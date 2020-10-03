@@ -21,7 +21,6 @@ public class StudentLogin extends AppCompatActivity {
 
     private ImageView backbtn;
     private FirebaseAuth mAuth;
-
     private EditText emailInput, passInput;
     private Button studentLogin;
 
