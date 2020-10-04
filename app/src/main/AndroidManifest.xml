@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.EmailVerify"></activity>
+        <activity android:name=".activities.UserProfile"></activity>
+        <activity android:name=".activities.EmailVerify" />
         <activity android:name=".activities.AdminHome" />
         <activity android:name=".activities.UserHome" />
         <activity android:name=".activities.AdminLogin" />
