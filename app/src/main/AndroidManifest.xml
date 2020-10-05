@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.student.UserProfile"></activity>
+        <activity android:name=".activities.admin.AddItem"></activity>
+        <activity android:name=".activities.student.UserProfile" />
         <activity android:name=".activities.student.EmailVerify" />
         <activity android:name=".activities.admin.AdminHome" />
         <activity android:name=".activities.student.UserHome" />
         <activity android:name=".activities.admin.AdminLogin" />
         <activity android:name=".activities.student.StudentRegister" />
         <activity android:name=".activities.student.StudentLogin" />
-        <activity android:name=".activities.student.GettingStarted">
+        <activity android:name=".activities.GettingStarted">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

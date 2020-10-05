@@ -42,6 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_weight="1"
+        android:background="#EEE"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -58,6 +61,10 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_weight="1"
+        android:background="#EEE"
+        android:id="@+id/item"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -77,6 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#eee"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:id="@+id/borrowHistory">
@@ -91,6 +99,7 @@
             android:layout_height="50dp"
             android:background="#eee"
             android:gravity="center"
+            android:layout_margin="10dp"
             android:orientation="horizontal"
             android:id="@+id/searchUser">
             <TextView

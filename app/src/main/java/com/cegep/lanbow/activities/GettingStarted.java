@@ -1,4 +1,4 @@
-package com.cegep.lanbow.activities.student;
+package com.cegep.lanbow.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.activities.admin.AdminLogin;
+import com.cegep.lanbow.activities.student.StudentLogin;
+import com.cegep.lanbow.activities.student.StudentRegister;
+import com.cegep.lanbow.activities.student.UserProfile;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class GettingStarted extends AppCompatActivity {
@@ -26,9 +29,9 @@ public class GettingStarted extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser()!=null){
-            startActivity(new Intent(GettingStarted.this,UserProfile.class));
-        }
+//        if(auth.getCurrentUser()!=null){
+//            startActivity(new Intent(GettingStarted.this, UserProfile.class));
+//        }
 
 
 
