@@ -41,7 +41,10 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Student student = snapshot.getValue(Student.class);
-                name.setText(student.getStudentId().toString());
+                name.setText(student.getName().toString());
+                studentid.setText(student.getStudentId().toString());
+                address.setText(student.getAddress().toString());
+                phone.setText(student.getPhonenumber().toString());
             }
 
             @Override
