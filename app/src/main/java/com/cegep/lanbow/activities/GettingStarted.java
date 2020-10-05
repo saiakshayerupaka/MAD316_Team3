@@ -16,10 +16,12 @@ public class GettingStarted extends AppCompatActivity {
     private TextView studentRegister;
     private Button adminLogin;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_getting_started);
+
 
 
         studentLogin = findViewById(R.id.studentLogin);
