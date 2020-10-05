@@ -1,4 +1,4 @@
-package com.cegep.lanbow.activities;
+package com.cegep.lanbow.activities.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 

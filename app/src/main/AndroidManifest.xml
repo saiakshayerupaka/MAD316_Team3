@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.UserProfile"></activity>
-        <activity android:name=".activities.EmailVerify" />
-        <activity android:name=".activities.AdminHome" />
-        <activity android:name=".activities.UserHome" />
-        <activity android:name=".activities.AdminLogin" />
-        <activity android:name=".activities.StudentRegister" />
-        <activity android:name=".activities.StudentLogin" />
-        <activity android:name=".activities.GettingStarted">
+        <activity android:name=".activities.student.UserProfile"></activity>
+        <activity android:name=".activities.student.EmailVerify" />
+        <activity android:name=".activities.admin.AdminHome" />
+        <activity android:name=".activities.student.UserHome" />
+        <activity android:name=".activities.admin.AdminLogin" />
+        <activity android:name=".activities.student.StudentRegister" />
+        <activity android:name=".activities.student.StudentLogin" />
+        <activity android:name=".activities.student.GettingStarted">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

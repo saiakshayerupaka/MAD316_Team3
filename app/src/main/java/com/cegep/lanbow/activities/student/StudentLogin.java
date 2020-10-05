@@ -1,4 +1,4 @@
-package com.cegep.lanbow.activities;
+package com.cegep.lanbow.activities.student;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

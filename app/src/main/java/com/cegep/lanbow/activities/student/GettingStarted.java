@@ -1,4 +1,4 @@
-package com.cegep.lanbow.activities;
+package com.cegep.lanbow.activities.student;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.activities.admin.AdminLogin;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class GettingStarted extends AppCompatActivity {
