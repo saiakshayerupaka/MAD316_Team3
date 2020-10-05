@@ -9,18 +9,25 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cegep.lanbow.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class GettingStarted extends AppCompatActivity {
 
     private Button studentLogin;
     private TextView studentRegister;
     private Button adminLogin;
-
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_getting_started);
+
+        auth = FirebaseAuth.getInstance();
+
+        if(auth.getCurrentUser()!=null){
+            startActivity(new Intent(GettingStarted.this,UserProfile.class));
+        }
 
 
 

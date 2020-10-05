@@ -1,6 +1,8 @@
 package com.cegep.lanbow.models;
 
 public class Student {
+    public Student() {
+    }
 
     public Student(String name, String email, String studentId, String phonenumber, String address) {
         this.name = name;
