@@ -41,6 +41,14 @@ public class AdminHome extends AppCompatActivity {
 
         item = findViewById(R.id.item);
 
+        countUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminHome.this,SearchUsers.class));
+
+            }
+        });
+
         item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
