@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.cegep.lanbow.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -32,6 +33,7 @@ public class AddItem extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private Button upload;
+    private FirebaseDatabase database;
 
     private EditText itemTitle,itemDescription;
     private Button AddItem;
@@ -63,6 +65,19 @@ public class AddItem extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        database = FirebaseDatabase.getInstance();
+
+        itemTitle = findViewById(R.id.itemTitle);
+        itemDescription = findViewById(R.id.itemDes);
+        AddItem = findViewById(R.id.AddItem);
+
+        AddItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
 
