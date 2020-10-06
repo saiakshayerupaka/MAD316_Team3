@@ -75,7 +75,7 @@ public class AddItem extends AppCompatActivity {
         AddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                database.getReference().child("Items").child(UUID.randomUUID().toString())
             }
         });
 
