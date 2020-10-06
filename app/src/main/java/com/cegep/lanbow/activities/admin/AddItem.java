@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
@@ -31,6 +32,9 @@ public class AddItem extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private Button upload;
+
+    private EditText itemTitle,itemDescription;
+    private Button AddItem;
 
 
     @Override
@@ -59,6 +63,9 @@ public class AddItem extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+
+
 
         upload = findViewById(R.id.upload);
         upload.setOnClickListener(new View.OnClickListener() {
