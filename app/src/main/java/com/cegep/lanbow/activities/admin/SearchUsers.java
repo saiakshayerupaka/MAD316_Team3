@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.cegep.lanbow.R;
@@ -22,6 +25,8 @@ public class SearchUsers extends AppCompatActivity {
     private ListView listView;
     private FirebaseDatabase database;
     private List<Student> students = new ArrayList<>();
+    private EditText search;
+    private UserlistAdapter userlistAdapter;
 
 
     @Override
@@ -32,6 +37,24 @@ public class SearchUsers extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         listView = findViewById(R.id.listview);
+        search = findViewById(R.id.search);
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                userlistAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -43,7 +66,7 @@ public class SearchUsers extends AppCompatActivity {
                 }
 
                 if(students!=null) {
-                    UserlistAdapter userlistAdapter = new UserlistAdapter(SearchUsers.this, students);
+                    userlistAdapter = new UserlistAdapter(SearchUsers.this, students);
                     listView.setAdapter(userlistAdapter);
                 }
             }
