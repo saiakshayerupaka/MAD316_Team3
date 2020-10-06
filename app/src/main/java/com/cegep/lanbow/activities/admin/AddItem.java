@@ -16,8 +16,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.models.Item;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -35,6 +38,7 @@ public class AddItem extends AppCompatActivity {
     private Button upload;
     private FirebaseDatabase database;
 
+    private String imgurl;
     private EditText itemTitle,itemDescription;
     private Button AddItem;
 
@@ -75,7 +79,23 @@ public class AddItem extends AppCompatActivity {
         AddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.getReference().child("Items").child(UUID.randomUUID().toString())
+
+                if(imgurl!=null && !itemTitle.getText().toString().equals("") && !itemDescription.getText().toString().equals(""))
+
+                database.getReference().child("Items").child(UUID.randomUUID().toString()).setValue(new Item(imgurl,itemTitle.getText().toString(),itemDescription.getText().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(AddItem.this,"Item Added successfully",Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                        else{
+                            Toast.makeText(AddItem.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+                });
             }
         });
 
@@ -86,6 +106,8 @@ public class AddItem extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                imgurl = null;
                 upload();
             }
         });
@@ -116,12 +138,14 @@ public class AddItem extends AppCompatActivity {
             StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
 
 
+
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                     progressDialog.dismiss();
+                                    imgurl = taskSnapshot.getMetadata().getPath();
                                     Toast.makeText(AddItem.this, "Image Uploaded!!"+                                    taskSnapshot.getMetadata().getPath()
                                             , Toast.LENGTH_SHORT).show();
                                 }
