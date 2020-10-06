@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
@@ -37,6 +38,7 @@ public class AddItem extends AppCompatActivity {
     private StorageReference storageReference;
     private Button upload;
     private FirebaseDatabase database;
+    private ImageView itemImg;
 
     private String imgurl;
     private EditText itemTitle,itemDescription;
@@ -55,6 +57,7 @@ public class AddItem extends AppCompatActivity {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(
                                 getContentResolver(),
                                 filePath);
+                itemImg.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -75,6 +78,7 @@ public class AddItem extends AppCompatActivity {
         itemTitle = findViewById(R.id.itemTitle);
         itemDescription = findViewById(R.id.itemDes);
         AddItem = findViewById(R.id.AddItem);
+        itemImg = findViewById(R.id.itemImg);
 
         AddItem.setOnClickListener(new View.OnClickListener() {
             @Override
