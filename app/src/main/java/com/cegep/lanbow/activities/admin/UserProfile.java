@@ -60,6 +60,26 @@ public class UserProfile extends AppCompatActivity {
 
         block = findViewById(R.id.block);
 
+        database.getReference().child("Users").child(s.getKey()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Student s = snapshot.getValue(Student.class);
+
+                if(s.getProfileStatus().equals("active")){
+                    block.setText("Block User");
+                }
+                else{
+                    block.setText("Unblock User");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         block.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +92,9 @@ public class UserProfile extends AppCompatActivity {
 
                         if(s.getProfileStatus()!=null && s.getProfileStatus().equals("active")) {
                             database.getReference().child("Users").child(s.getKey()).child("profileStatus").setValue("block");
+                        }
+                        else if(s.getProfileStatus()!=null && s.getProfileStatus().equals("block")){
+                            database.getReference().child("Users").child(s.getKey()).child("profileStatus").setValue("active");
                         }
 
                     }
