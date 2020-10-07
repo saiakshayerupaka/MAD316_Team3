@@ -25,7 +25,8 @@ public class AdminHome extends AppCompatActivity {
     private ImageView backbtn;
     private TextView countUser,countItem;
     private FirebaseDatabase database;
-    private LinearLayout item;
+    private LinearLayout item,searchUser;
+
 
 
     @Override
@@ -38,6 +39,15 @@ public class AdminHome extends AppCompatActivity {
 
         countUser = findViewById(R.id.countUser);
         countItem = findViewById(R.id.countItem);
+
+        searchUser = findViewById(R.id.searchUser);
+
+        searchUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminHome.this,SearchUsers.class));
+            }
+        });
 
         item = findViewById(R.id.item);
 
@@ -52,7 +62,7 @@ public class AdminHome extends AppCompatActivity {
         item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminHome.this,AddItem.class));
+                startActivity(new Intent(AdminHome.this,Items.class));
             }
         });
 
@@ -61,6 +71,19 @@ public class AdminHome extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int i = (int) snapshot.getChildrenCount();
                 countUser.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        database.getReference().child("Items").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int i = (int) snapshot.getChildrenCount();
+                countItem.setText(String.valueOf(i));
             }
 
             @Override

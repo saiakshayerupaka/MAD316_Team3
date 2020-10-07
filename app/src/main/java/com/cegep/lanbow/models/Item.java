@@ -38,4 +38,14 @@ public class Item {
     private String itemUrl;
     private String itemName;
     private String itemDes;
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+    private String itemId;
 }

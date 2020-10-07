@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.cegep.lanbow.R;
@@ -32,6 +33,7 @@ public class SearchUsers extends AppCompatActivity {
     private List<Student> students = new ArrayList<>();
     private EditText search;
     private UserlistAdapter userlistAdapter;
+    private ImageView back;
 
 
     @Override
@@ -40,6 +42,15 @@ public class SearchUsers extends AppCompatActivity {
         setContentView(R.layout.activity_search_users);
 
         database = FirebaseDatabase.getInstance();
+
+        back = findViewById(R.id.backbtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         listView = findViewById(R.id.listview);
         search = findViewById(R.id.search);
