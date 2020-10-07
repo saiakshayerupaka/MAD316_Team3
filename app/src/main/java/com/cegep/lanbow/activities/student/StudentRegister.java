@@ -158,7 +158,7 @@ public class StudentRegister extends AppCompatActivity implements Validator.Vali
                                             Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            Student student = new Student(nameInput.getText().toString(),user.getEmail(),idInput.getText().toString(),phoneInput.getText().toString(),addressInput.getText().toString());
+                            Student student = new Student(nameInput.getText().toString(),user.getEmail(),idInput.getText().toString(),phoneInput.getText().toString(),addressInput.getText().toString(),"active");
 
                             database.getReference().child("Users").child(mAuth.getCurrentUser().getUid()).setValue(student).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

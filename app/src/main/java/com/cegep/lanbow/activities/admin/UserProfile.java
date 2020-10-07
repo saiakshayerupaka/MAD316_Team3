@@ -1,5 +1,6 @@
 package com.cegep.lanbow.activities.admin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,12 +12,17 @@ import android.widget.TextView;
 
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Student;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
 
     private TextView name,email,studentid,phone,address;
     private Button block;
     private ImageView back;
+    private FirebaseDatabase database;
 
 
     @Override
@@ -24,7 +30,10 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile2);
 
-        Student s = (Student) getIntent().getSerializableExtra("data");
+        database = FirebaseDatabase.getInstance();
+
+
+        final Student s = (Student) getIntent().getSerializableExtra("data");
 
 
 
@@ -54,6 +63,24 @@ public class UserProfile extends AppCompatActivity {
         block.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                database.getReference().child("Users").child(s.getKey()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        Student s = snapshot.getValue(Student.class);
+
+                        if(s.getProfileStatus()!=null && s.getProfileStatus().equals("active")) {
+                            database.getReference().child("Users").child(s.getKey()).child("profileStatus").setValue("block");
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
             }
         });

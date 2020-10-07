@@ -6,12 +6,13 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Student(String name, String email, String studentId, String phonenumber, String address) {
+    public Student(String name, String email, String studentId, String phonenumber, String address,String profileStatus) {
         this.name = name;
         this.email = email;
         this.studentId = studentId;
         this.phonenumber = phonenumber;
         this.address = address;
+        this.profileStatus = profileStatus;
     }
 
     public String getName() {
@@ -60,13 +61,23 @@ public class Student implements Serializable {
     public String phonenumber;
     public String address;
 
+    public String getProfileStatus() {
+        return profileStatus;
+    }
+
+    public void setProfileStatus(String profileStatus) {
+        this.profileStatus = profileStatus;
+    }
+
+    public String profileStatus;
+
     public String getKey() {
-        return key;
+        return Key;
     }
 
     public void setKey(String key) {
-        this.key = key;
+        Key = key;
     }
 
-    public String key;
+    public String Key;
 }
