@@ -91,10 +91,10 @@ public class UserProfile extends AppCompatActivity {
                         Student s = snapshot.getValue(Student.class);
 
                         if(s.getProfileStatus()!=null && s.getProfileStatus().equals("active")) {
-                            database.getReference().child("Users").child(s.getKey()).child("profileStatus").setValue("block");
+                            database.getReference().child("Users").child(snapshot.getKey()).child("profileStatus").setValue("block");
                         }
                         else if(s.getProfileStatus()!=null && s.getProfileStatus().equals("block")){
-                            database.getReference().child("Users").child(s.getKey()).child("profileStatus").setValue("active");
+                            database.getReference().child("Users").child(snapshot.getKey()).child("profileStatus").setValue("active");
                         }
 
                     }
