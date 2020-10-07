@@ -3,9 +3,12 @@ package com.cegep.lanbow.activities.admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -17,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +72,15 @@ public class SearchUsers extends AppCompatActivity {
                 if(students!=null) {
                     userlistAdapter = new UserlistAdapter(SearchUsers.this, students);
                     listView.setAdapter(userlistAdapter);
+
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent in = new Intent(SearchUsers.this,UserProfile.class);
+                            in.putExtra("data", (Serializable) students.get(position));
+                            startActivity(in);
+                        }
+                    });
                 }
             }
 
