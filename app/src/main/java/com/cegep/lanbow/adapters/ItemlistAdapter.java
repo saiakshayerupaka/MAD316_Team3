@@ -1,12 +1,16 @@
 package com.cegep.lanbow.adapters;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Item;
 import com.cegep.lanbow.models.Student;
 
@@ -44,12 +48,29 @@ public class ItemlistAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+
+        View v = convertView;
+
+        if (v == null) {
+            LayoutInflater vi;
+            vi = LayoutInflater.from(mContext);
+            v = vi.inflate(R.layout.itemlist, null);
+        }
+
+
+        TextView itemName = v.findViewById(R.id.itemName);
+        TextView itemId = v.findViewById(R.id.itemId);
+        ImageView itemImg = v.findViewById(R.id.itemImg);
+        ImageView delete = v.findViewById(R.id.removeItem);
+
+
+        return v;
+
     }
 
     @Override
     public Filter getFilter() {
-        return null;
+        return mFilter;
     }
 
     private class ItemFilter extends Filter {
