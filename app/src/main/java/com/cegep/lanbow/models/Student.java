@@ -1,6 +1,8 @@
 package com.cegep.lanbow.models;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     public Student() {
     }
 
