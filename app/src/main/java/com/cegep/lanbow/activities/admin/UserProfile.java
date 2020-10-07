@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Student;
@@ -60,10 +62,9 @@ public class UserProfile extends AppCompatActivity {
 
         block = findViewById(R.id.block);
 
-        database.getReference().child("Users").child(s.getKey()).addValueEventListener(new ValueEventListener() {
+        database.getReference().child("Users").child(s.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Student s = snapshot.getValue(Student.class);
 
                 if(s.getProfileStatus().equals("active")){
                     block.setText("Block User");
@@ -71,7 +72,6 @@ public class UserProfile extends AppCompatActivity {
                 else{
                     block.setText("Unblock User");
                 }
-
             }
 
             @Override
@@ -84,17 +84,21 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                database.getReference().child("Users").child(s.getKey()).addValueEventListener(new ValueEventListener() {
+                database.getReference().child("Users").child(s.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         Student s = snapshot.getValue(Student.class);
 
                         if(s.getProfileStatus()!=null && s.getProfileStatus().equals("active")) {
-                            database.getReference().child("Users").child(s.getKey()).child("profileStatus").setValue("block");
+                            database.getReference().child("Users").child(snapshot.getKey()).child("profileStatus").setValue("block");
+                            block.setText("Unblock User");
+
                         }
                         else if(s.getProfileStatus()!=null && s.getProfileStatus().equals("block")){
-                            database.getReference().child("Users").child(s.getKey()).child("profileStatus").setValue("active");
+                            database.getReference().child("Users").child(snapshot.getKey()).child("profileStatus").setValue("active");
+                            block.setText("Block User");
+
                         }
 
                     }

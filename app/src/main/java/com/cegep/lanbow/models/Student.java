@@ -72,12 +72,12 @@ public class Student implements Serializable {
     public String profileStatus;
 
     public String getKey() {
-        return Key;
+        return key;
     }
 
     public void setKey(String key) {
-        Key = key;
+        this.key = key;
     }
 
-    public String Key;
+    public String key;
 }
