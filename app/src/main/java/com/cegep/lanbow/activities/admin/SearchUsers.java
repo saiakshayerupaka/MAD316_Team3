@@ -65,7 +65,9 @@ public class SearchUsers extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot snap: snapshot.getChildren()){
+
                     Student s = snap.getValue(Student.class);
+                    s.setKey(snap.getKey());
                     students.add(s);
                 }
 

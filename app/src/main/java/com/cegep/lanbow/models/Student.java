@@ -59,4 +59,14 @@ public class Student implements Serializable {
     public String studentId;
     public String phonenumber;
     public String address;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String key;
 }
