@@ -86,10 +86,10 @@ itemlistAdapter.getFilter().filter(s);
                     Item item = snap.getValue(Item.class);
                     item.setItemId(snap.getKey());
                     items.add(item);
-                    itemlistAdapter = new ItemlistAdapter(Items.this,items);
-                    itemlist.setAdapter(itemlistAdapter);
 
                 }
+                itemlistAdapter = new ItemlistAdapter(Items.this,items);
+                itemlist.setAdapter(itemlistAdapter);
 
             }
 
