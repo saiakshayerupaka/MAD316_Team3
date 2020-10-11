@@ -10,6 +10,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Borrow Date"></TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/borrowdate"
+                    android:text="Borrow Date"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="return Date"></TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/returndate"
+                    android:text="Borrow Date"></TextView>
+            </LinearLayout>
+        </LinearLayout>
+
         <com.savvi.rangedatepicker.CalendarPickerView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,7 +54,7 @@
             android:layout_height="match_parent"
             android:scrollbarStyle="outsideOverlay"
             android:clipToPadding="false"
-            app:tsquare_orientation_horizontal="false"
             />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
