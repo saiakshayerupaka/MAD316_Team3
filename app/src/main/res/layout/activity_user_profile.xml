@@ -135,7 +135,22 @@
             android:textColor="@color/colorPrimary"
             android:id="@+id/address"/>
     </LinearLayout>
-
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/changePass"
+        android:text="Change Password"
+        android:background="@drawable/btnprimary"
+        android:textColor="#FFF"/>
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/editProfile"
+        android:text="Edit Profile"
+        android:background="@drawable/btnprimary"
+        android:textColor="#FFF"/>
 
 </LinearLayout>
 
