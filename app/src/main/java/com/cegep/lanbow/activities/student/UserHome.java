@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class UserHome extends AppCompatActivity {
-    private ImageView backbtn;
+    private ImageView profile;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +28,14 @@ public class UserHome extends AppCompatActivity {
             finish();
         }
 
-        backbtn = findViewById(R.id.backbtn);
+        profile = findViewById(R.id.profile);
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
+        profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(UserHome.this,UserProfile.class));
             }
         });
+
     }
 }
