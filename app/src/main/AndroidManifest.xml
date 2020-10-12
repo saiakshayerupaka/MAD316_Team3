@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.student.Reservation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.admin.Items" />
         <activity android:name=".activities.admin.UserProfile" />
@@ -28,7 +24,11 @@
         <activity android:name=".activities.student.StudentRegister" />
         <activity android:name=".activities.student.StudentLogin" />
         <activity android:name=".activities.GettingStarted">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
