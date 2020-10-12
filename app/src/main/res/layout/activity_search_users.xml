@@ -41,13 +41,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
+
             <EditText
+                android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Search"
-                android:id="@+id/search"
                 android:background="#EEE"
-                android:padding="15dp"/>
+                android:hint="Search"
+                android:padding="15dp" />
         </LinearLayout>
 
         <ListView
