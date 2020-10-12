@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.adapters.HomeItemListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -16,6 +17,7 @@ public class UserHome extends AppCompatActivity {
     private ImageView profile;
     private FirebaseAuth mAuth;
     private ListView listview;
+    private HomeItemListAdapter homeItemListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
