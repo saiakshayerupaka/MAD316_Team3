@@ -9,6 +9,8 @@ import android.widget.Toast;
 import com.cegep.lanbow.R;
 import com.savvi.rangedatepicker.CalendarPickerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,6 +25,8 @@ public class Reservation extends AppCompatActivity {
         setContentView(R.layout.activity_reservation);
 
         calendar = findViewById(R.id.calendar_view);
+        borrowdate = findViewById(R.id.borrowdate);
+        returndate = findViewById(R.id.returndate);
 
         final Calendar cal = Calendar.getInstance();
         Date today = cal.getTime();
@@ -35,10 +39,17 @@ public class Reservation extends AppCompatActivity {
         calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {
+                DateFormat df = new SimpleDateFormat("MMM, d yyyy");
+
                 if(calendar.getSelectedDates().size()<=1){
                     Toast.makeText(Reservation.this,"Borrow Date selected. Please select return date",Toast.LENGTH_LONG).show();
+                    borrowdate.setText(df.format(date));
+                    returndate.setText("");
+
                 }
                 else{
+                    returndate.setText(df.format(date));
+
                     Toast.makeText(Reservation.this,"Return date selected.select other date to change",Toast.LENGTH_LONG).show();
                 }
             }
