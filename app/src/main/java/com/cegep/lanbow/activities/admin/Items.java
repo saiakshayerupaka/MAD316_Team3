@@ -82,6 +82,7 @@ itemlistAdapter.getFilter().filter(s);
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+
                 for(DataSnapshot snap : snapshot.getChildren()){
                     Item item = snap.getValue(Item.class);
                     item.setItemId(snap.getKey());
