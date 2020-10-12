@@ -17,9 +17,10 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/back"
-                android:padding="17dp"
-                android:id="@+id/backbtn">
+                android:tint="#ccc"
+                android:src="@drawable/baseline_account_circle_black_48dp"
+                android:padding="10dp"
+                android:id="@+id/profile">
 
             </ImageView>
             <TextView
@@ -35,6 +36,33 @@
             android:layout_height="1dp"
             android:background="#ddd"></LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EEE"
+                android:hint="Search"
+                android:padding="15dp" />
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:id="@+id/listview"/>
+        </LinearLayout>
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

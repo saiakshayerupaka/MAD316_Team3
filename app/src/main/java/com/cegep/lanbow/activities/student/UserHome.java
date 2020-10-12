@@ -6,14 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.cegep.lanbow.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class UserHome extends AppCompatActivity {
-    private ImageView backbtn;
+    private ImageView profile;
     private FirebaseAuth mAuth;
+    private ListView listview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +31,14 @@ public class UserHome extends AppCompatActivity {
             finish();
         }
 
-        backbtn = findViewById(R.id.backbtn);
+        profile = findViewById(R.id.profile);
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
+        profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(UserHome.this,UserProfile.class));
             }
         });
+
     }
 }
