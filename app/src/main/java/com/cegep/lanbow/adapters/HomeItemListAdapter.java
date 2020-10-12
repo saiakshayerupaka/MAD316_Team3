@@ -67,7 +67,7 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
         if (v == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(mContext);
-            v = vi.inflate(R.layout.itemlist, null);
+            v = vi.inflate(R.layout.homelistitem, null);
         }
 
 
@@ -84,10 +84,7 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
         });
 
         itemId.setText(filtereditems.get(position).getItemId());
-
         itemName.setText(filtereditems.get(position).getItemName().toString());
-
-
 
         return v;
 
