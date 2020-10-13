@@ -3,7 +3,10 @@ package com.cegep.lanbow.activities.student;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.cegep.lanbow.R;
@@ -19,6 +22,7 @@ public class UserProfile extends AppCompatActivity {
     private TextView name,email,studentid,phone,address;
     private FirebaseAuth auth;
     private FirebaseDatabase database;
+    private Button editprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,17 @@ public class UserProfile extends AppCompatActivity {
         studentid = findViewById(R.id.studentid);
         phone = findViewById(R.id.phonenumber);
         address = findViewById(R.id.address);
+
+        editprofile = findViewById(R.id.editProfile);
+
+        editprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this,EditProfile.class);
+                startActivity(intent);
+            }
+        });
+
 
         email.setText(auth.getCurrentUser().getEmail());
 
