@@ -2,19 +2,27 @@ package com.cegep.lanbow.activities.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Item;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class ItemDescription extends AppCompatActivity {
 
     private TextView ItemName;
     private TextView ItemDes;
     private Button Reserve;
+    private ImageView Itemimg;
+    private FirebaseStorage firebaseStorage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +31,22 @@ public class ItemDescription extends AppCompatActivity {
 
         Item item = (Item) getIntent().getSerializableExtra("data");
 
+        firebaseStorage = FirebaseStorage.getInstance();
+
         ItemName = findViewById(R.id.itemName);
         ItemDes = findViewById(R.id.itemDes);
         Reserve = findViewById(R.id.reserve);
+
+        Itemimg = findViewById(R.id.itemImg);
+
+
+
+        firebaseStorage.getReference().child(item.getItemUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(ItemDescription.this).load(uri).into(Itemimg);
+            }
+        });
 
         ItemName.setText(item.getItemName());
         ItemDes.setText(item.getItemDes());
