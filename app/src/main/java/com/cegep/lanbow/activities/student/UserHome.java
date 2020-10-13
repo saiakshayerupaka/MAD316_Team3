@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -84,10 +85,21 @@ public class UserHome extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 itemlist.clear();
                 for(DataSnapshot snap : snapshot.getChildren()){
-                    itemlist.add(snap.getValue(Item.class));
+                    Item item = snap.getValue(Item.class);
+                    item.setItemId(snap.getKey());
+                    itemlist.add(item);
                 }
                 homeItemListAdapter = new HomeItemListAdapter(UserHome.this,itemlist);
                 listview.setAdapter(homeItemListAdapter);
+                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent in = new Intent(UserHome.this,ItemDescription.class);
+                        in.putExtra("data",homeItemListAdapter.getItem(position));
+                        startActivity(in);
+                    }
+                });
+
 
 
             }
@@ -97,6 +109,7 @@ public class UserHome extends AppCompatActivity {
 
             }
         });
+
 
 
 
