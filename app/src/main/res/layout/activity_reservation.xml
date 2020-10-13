@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="60dp"
-                android:text="Users"
+                android:text="Reserve Item"
                 android:gravity="center"
                 android:textSize="20dp"></TextView>
 
@@ -54,7 +54,7 @@
                     android:id="@+id/borrowdate"
                     android:textSize="20dp"
                     android:textColor="@color/colorPrimary"
-                    android:text="Borrow Date"></TextView>
+                    android:text="-"></TextView>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                     android:id="@+id/returndate"
                     android:textSize="20dp"
                     android:textColor="@color/colorPrimary"
-                    android:text="Borrow Date"></TextView>
+                    android:text="-"></TextView>
             </LinearLayout>
         </LinearLayout>
 
@@ -89,6 +89,16 @@
             android:scrollbarStyle="outsideOverlay"
             android:clipToPadding="false"
             />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/makereservation"
+            android:background="@drawable/btnprimary"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="-70dp"
+            android:text="Reserve"
+            android:textColor="#FFF"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

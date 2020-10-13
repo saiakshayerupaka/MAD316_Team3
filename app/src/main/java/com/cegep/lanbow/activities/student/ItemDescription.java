@@ -2,6 +2,7 @@ package com.cegep.lanbow.activities.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +30,7 @@ public class ItemDescription extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_description);
 
-        Item item = (Item) getIntent().getSerializableExtra("data");
+        final Item item = (Item) getIntent().getSerializableExtra("data");
 
         firebaseStorage = FirebaseStorage.getInstance();
 
@@ -54,6 +55,9 @@ public class ItemDescription extends AppCompatActivity {
         Reserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent in = new Intent(ItemDescription.this,Reservation.class);
+                in.putExtra("data",item);
+                startActivity(in);
 
             }
         });
