@@ -1,9 +1,13 @@
 package com.cegep.lanbow.activities.student;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.cegep.lanbow.R;
@@ -19,6 +23,7 @@ public class UserProfile extends AppCompatActivity {
     private TextView name,email,studentid,phone,address;
     private FirebaseAuth auth;
     private FirebaseDatabase database;
+    private Button resetpassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,26 @@ public class UserProfile extends AppCompatActivity {
         studentid = findViewById(R.id.studentid);
         phone = findViewById(R.id.phonenumber);
         address = findViewById(R.id.address);
+
+        resetpassword = findViewById(R.id.changePass);
+
+        resetpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.sendPasswordResetEmail(auth.getCurrentUser().getEmail());
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UserProfile.this);
+                alertDialogBuilder.setMessage("Password reset link has been set to your registered email.");
+                alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
 
         email.setText(auth.getCurrentUser().getEmail());
 

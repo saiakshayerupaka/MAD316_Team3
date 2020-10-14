@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.cegep.lanbow.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PasswordReset extends AppCompatActivity {
 
     private EditText pass,confirmpass;
     private Button reset;
     private ImageView back;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class PasswordReset extends AppCompatActivity {
             public void onClick(View v) {
                 if(!pass.getText().equals("")){
                     if(pass.getText().toString().equals(confirmpass.getText().toString())){
+
 
                     }
                 }
