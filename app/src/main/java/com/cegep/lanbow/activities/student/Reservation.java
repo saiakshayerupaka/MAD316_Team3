@@ -3,10 +3,14 @@ package com.cegep.lanbow.activities.student;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.savvi.rangedatepicker.CalendarPickerView;
 
 import java.text.DateFormat;
@@ -16,17 +20,36 @@ import java.util.Date;
 
 public class Reservation extends AppCompatActivity {
 
-    CalendarPickerView calendar;
-    TextView borrowdate,returndate;
+    private CalendarPickerView calendar;
+    private TextView borrowdate,returndate;
+    private FirebaseDatabase database;
+    private FirebaseAuth auth;
+    private Button reserve;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
+        database = FirebaseDatabase.getInstance();
+
         calendar = findViewById(R.id.calendar_view);
         borrowdate = findViewById(R.id.borrowdate);
         returndate = findViewById(R.id.returndate);
+
+        reserve = findViewById(R.id.reserve);
+
+        reserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(calendar.getSelectedDates().size()>1){
+
+                }
+                else{
+                    Toast.makeText(Reservation.this,"Please select borrow and return date!!!",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         final Calendar cal = Calendar.getInstance();
         Date today = cal.getTime();
