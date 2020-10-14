@@ -55,7 +55,7 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-validator.validate();
+               validator.validate();
             }
         });
 
@@ -64,6 +64,7 @@ validator.validate();
 
     @Override
     public void onValidationSucceeded() {
+        Toast.makeText(EditProfile.this,"Validation success",Toast.LENGTH_LONG).show();
 
     }
 
