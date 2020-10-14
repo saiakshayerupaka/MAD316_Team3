@@ -90,6 +90,7 @@ itemlistAdapter.getFilter().filter(s);
                     items.add(item);
 
                 }
+
                 itemlistAdapter = new ItemlistAdapter(Items.this,items);
                 itemlist.setAdapter(itemlistAdapter);
 

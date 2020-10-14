@@ -43,6 +43,7 @@ public class UserHome extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
         listview = findViewById(R.id.listview);
         search = findViewById(R.id.search);
 

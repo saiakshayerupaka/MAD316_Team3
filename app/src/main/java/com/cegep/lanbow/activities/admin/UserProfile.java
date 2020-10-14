@@ -65,6 +65,7 @@ public class UserProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Student s = snapshot.getValue(Student.class);
 
+
                 if(s.getProfileStatus().equals("active")){
                     block.setText("Block User");
                 }

@@ -107,6 +107,7 @@
                 android:gravity="center"
                 android:layout_height="match_parent"
                 android:text="Search Users"/>
+
         </LinearLayout>
     </LinearLayout>
 

@@ -62,6 +62,8 @@ public class UserProfile extends AppCompatActivity {
         resetpassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 auth.sendPasswordResetEmail(auth.getCurrentUser().getEmail());
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UserProfile.this);
                 alertDialogBuilder.setMessage("Password reset link has been set to your registered email.");
@@ -73,6 +75,7 @@ public class UserProfile extends AppCompatActivity {
                 });
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
+
                 alertDialog.show();
             }
         });

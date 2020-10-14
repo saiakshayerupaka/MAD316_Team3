@@ -94,6 +94,8 @@ public class SearchUsers extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             Intent in = new Intent(SearchUsers.this,UserProfile.class);
+
+
                             in.putExtra("data", (Serializable) students.get(position));
                             startActivity(in);
                         }

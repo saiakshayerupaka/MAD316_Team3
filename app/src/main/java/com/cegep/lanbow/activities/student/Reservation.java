@@ -107,6 +107,7 @@ public class Reservation extends AppCompatActivity {
                         if (calendar.getSelectedDates().size() > 1) {
                             return true;
                         }
+                        Toast.makeText(Reservation.this,"You can select max 5 days",Toast.LENGTH_LONG).show();
 
                         return false;
                     }
