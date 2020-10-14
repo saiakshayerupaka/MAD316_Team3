@@ -46,6 +46,8 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
+        editProfile = findViewById(R.id.editProfile);
+
 
         name = findViewById(R.id.username);
         email = findViewById(R.id.email);
