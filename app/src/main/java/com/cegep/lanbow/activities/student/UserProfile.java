@@ -29,6 +29,8 @@ public class UserProfile extends AppCompatActivity {
     private Button resetpassword;
     private Button editProfile;
     private ImageView backbtn;
+    private Student student;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,7 @@ public class UserProfile extends AppCompatActivity {
         database.getReference().child("Users").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Student student = snapshot.getValue(Student.class);
+                student = snapshot.getValue(Student.class);
                 name.setText(student.getName().toString());
                 studentid.setText(student.getStudentId().toString());
                 address.setText(student.getAddress().toString());
@@ -98,6 +100,7 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserProfile.this,EditProfile.class);
+                intent.putExtra("data",student);
                 startActivity(intent);
             }
         });
