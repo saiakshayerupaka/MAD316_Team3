@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.student.PasswordReset"></activity>
-        <activity android:name=".activities.student.Reservation"></activity>
+        <activity android:name=".activities.student.EditProfile"></activity>
+        <activity android:name=".activities.student.ItemDescription" />
+        <activity android:name=".activities.student.PasswordReset" />
+        <activity android:name=".activities.student.Reservation" />
         <activity android:name=".activities.admin.Items" />
         <activity android:name=".activities.admin.UserProfile" />
         <activity android:name=".activities.admin.SearchUsers" />
