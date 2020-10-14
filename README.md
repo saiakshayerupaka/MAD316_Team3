@@ -1,13 +1,14 @@
 # MAD316_Team3
 This is Our Academic project to satisfy the requirements needed for obtaining Post Graduation Diploma in Mobile Application Developement
 
-We have done by a group of 5 people 
+We have done by a group of 7 people 
 Dipmal Lakhani
 Sai Akshay Erupaka
 Prashant Reddy
 Sanjeev
 Aman Sehmi
 HarshaVardhan Vummidi
+Gopi Chand Kandula
 
 This is an lending and borrowing system with very good User Interface.
 
