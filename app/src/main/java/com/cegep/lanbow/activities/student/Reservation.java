@@ -37,7 +37,7 @@ public class Reservation extends AppCompatActivity {
         borrowdate = findViewById(R.id.borrowdate);
         returndate = findViewById(R.id.returndate);
 
-        reserve = findViewById(R.id.reserve);
+        reserve = findViewById(R.id.makereservation);
 
         reserve.setOnClickListener(new View.OnClickListener() {
             @Override
