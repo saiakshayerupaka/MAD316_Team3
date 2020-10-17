@@ -41,6 +41,16 @@ public class Item implements Serializable {
     private String itemName;
     private String itemDes;
 
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    private String itemType;
+
     public String getItemId() {
         return itemId;
     }
