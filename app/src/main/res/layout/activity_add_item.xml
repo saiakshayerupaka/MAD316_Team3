@@ -27,6 +27,11 @@
             android:hint="Item Title"
             android:id="@+id/itemTitle"
             android:background="@drawable/edittextback"/>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
