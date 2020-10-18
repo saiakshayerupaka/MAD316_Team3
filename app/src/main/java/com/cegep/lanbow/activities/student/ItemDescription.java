@@ -16,7 +16,7 @@ import com.cegep.lanbow.models.Item;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 
-public class ItemDescription extends AppCompatActivity {
+public class  ItemDescription extends AppCompatActivity {
 
     private TextView ItemName;
     private TextView ItemDes;
