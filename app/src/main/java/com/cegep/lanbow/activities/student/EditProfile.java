@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,12 +18,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.activities.admin.AddItem;
 import com.cegep.lanbow.models.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
@@ -33,6 +40,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class EditProfile extends AppCompatActivity implements Validator.ValidationListener {
 
@@ -42,13 +50,14 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
     private EditText email;
     @NotEmpty
     private EditText name;
-    @Pattern(regex = "^[0-9-]+$",message = "Enter valid phone number")
+    @Pattern(regex = "^[0-9-]+$", message = "Enter valid phone number")
     private EditText phone;
     @NotEmpty
     private EditText address;
     private Button save;
     private Validator validator;
     private Uri uploadFilePath;
+    private String profileurl;
 
     private FirebaseStorage storage;
 
@@ -104,7 +113,7 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               validator.validate();
+                validator.validate();
             }
         });
 
@@ -113,19 +122,19 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
 
     @Override
     public void onValidationSucceeded() {
-        Toast.makeText(EditProfile.this,"Validation success",Toast.LENGTH_LONG).show();
+        Toast.makeText(EditProfile.this, "Validation success", Toast.LENGTH_LONG).show();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("email", email.getText().toString());
 
         childUpdates.put("name", name.getText().toString());
-        childUpdates.put("address",address.getText().toString());
-        childUpdates.put("phonenumber",phone.getText().toString());
+        childUpdates.put("address", address.getText().toString());
+        childUpdates.put("phonenumber", phone.getText().toString());
 
         database.getReference().child("Users").child(auth.getCurrentUser().getUid()).updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(EditProfile.this,"Profile updated",Toast.LENGTH_LONG).show();
+                if (task.isSuccessful()) {
+                    Toast.makeText(EditProfile.this, "Profile updated", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -144,21 +153,66 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
             } else {
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
-        }    }
+        }
+    }
+
+    private void upload(){
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 234 && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
-           uploadFilePath = data.getData();
+            uploadFilePath = data.getData();
             uploadImage(uploadFilePath);
-
 
 
         }
     }
 
-    private void uploadImage(String uploadFilePath) {
+    private void uploadImage(Uri uploadFilePath) {
+
+        final ProgressDialog progressDialog
+                = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading...");
+        progressDialog.show();
+
+        StorageReference ref = storage.getReference().child("profilepic/" + UUID.randomUUID().toString());
+
+
+        ref.putFile(uploadFilePath)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        progressDialog.dismiss();
+                        profileurl = taskSnapshot.getMetadata().getPath();
+                        Toast.makeText(EditProfile.this, "Image Uploaded!!" + taskSnapshot.getMetadata().getPath()
+                                , Toast.LENGTH_SHORT).show();
+                    }
+                })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        progressDialog.dismiss();
+                        Toast.makeText(EditProfile.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnProgressListener(
+                        new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+
+                            @Override
+                            public void onProgress(
+                                    UploadTask.TaskSnapshot taskSnapshot) {
+                                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                                progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                            }
+                        });
     }
 }
