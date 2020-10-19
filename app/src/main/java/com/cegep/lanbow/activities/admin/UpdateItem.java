@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,11 +34,24 @@ public class UpdateItem extends AppCompatActivity {
 
         Item item = (Item) getIntent().getSerializableExtra("data");
 
+
+
         itemImg = findViewById(R.id.itemImg);
         itemName = findViewById(R.id.itemTitle);
         itemDescription = findViewById(R.id.itemDes);
+        spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.item_types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(adapter.getPosition(item.getItemType()));
 
         updateItem = findViewById(R.id.UpdateItem);
+
+
+        itemName.setText(item.getItemName());
+        itemDescription.setText(item.getItemDes());
+
 
         updateItem.setOnClickListener(new View.OnClickListener() {
             @Override

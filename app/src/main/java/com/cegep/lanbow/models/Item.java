@@ -31,10 +31,11 @@ public class Item implements Serializable {
         this.itemDes = itemDes;
     }
 
-    public Item(String itemUrl, String itemName, String itemDes) {
+    public Item(String itemUrl, String itemName, String itemDes,String itemType) {
         this.itemUrl = itemUrl;
         this.itemName = itemName;
         this.itemDes = itemDes;
+        this.itemType = itemType;
     }
 
     private String itemUrl;

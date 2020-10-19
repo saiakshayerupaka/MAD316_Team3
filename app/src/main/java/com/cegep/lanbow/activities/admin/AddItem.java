@@ -90,7 +90,6 @@ public class AddItem extends AppCompatActivity {
                 R.array.item_types, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        itemType = (String) spinner.getSelectedItem();
 
 
 
@@ -100,7 +99,7 @@ public class AddItem extends AppCompatActivity {
 
                 if(imgurl!=null && !itemTitle.getText().toString().equals("") && !itemDescription.getText().toString().equals(""))
 
-                database.getReference().child("Items").child(UUID.randomUUID().toString()).setValue(new Item(imgurl,itemTitle.getText().toString(),itemDescription.getText().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                database.getReference().child("Items").child(UUID.randomUUID().toString()).setValue(new Item(imgurl,itemTitle.getText().toString(),itemDescription.getText().toString(),spinner.getSelectedItem().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
