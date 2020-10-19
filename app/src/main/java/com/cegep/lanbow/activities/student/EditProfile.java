@@ -125,7 +125,9 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
         Toast.makeText(EditProfile.this, "Validation success", Toast.LENGTH_LONG).show();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("email", email.getText().toString());
-
+if(!email.getText().equals(s.getEmail())){
+    auth.getCurrentUser().updateEmail(email.getText().toString());
+}
         childUpdates.put("name", name.getText().toString());
         childUpdates.put("address", address.getText().toString());
         childUpdates.put("phonenumber", phone.getText().toString());
