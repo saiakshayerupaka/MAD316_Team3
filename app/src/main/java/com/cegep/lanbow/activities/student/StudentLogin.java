@@ -31,6 +31,10 @@ public class StudentLogin extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        if(mAuth.getCurrentUser()!=null){
+            startActivity(new Intent(StudentLogin.this, UserHome.class));
+        }
+
         emailInput = findViewById(R.id.emailInput);
         passInput = findViewById(R.id.passInput);
         studentLogin = findViewById(R.id.studentLogin);
