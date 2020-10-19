@@ -1,5 +1,7 @@
 package com.cegep.lanbow.models;
 
+import android.util.Log;
+
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
@@ -7,6 +9,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Reserve implements Serializable {
+
+
+    public Reserve() {
+    }
 
     public String getUserId() {
         return userId;
@@ -24,39 +30,39 @@ public class Reserve implements Serializable {
         this.itemId = itemId;
     }
 
-    public List<Date> getSelectedDates() {
+    public List<Long> getSelectedDates() {
         return selectedDates;
     }
 
-    public void setSelectedDates(List<Date> selectedDates) {
+    public void setSelectedDates(List<Long> selectedDates) {
         this.selectedDates = selectedDates;
     }
 
-    public Date getAddon() {
+    public Long getAddon() {
         return addon;
     }
 
-    public void setAddon(Date addon) {
+    public void setAddon(Long addon) {
         this.addon = addon;
     }
 
-    public Date getBorrowDate() {
+    public Long getBorrowDate() {
         return borrowDate;
     }
 
-    public void setBorrowDate(Date borrowDate) {
+    public void setBorrowDate(Long borrowDate) {
         this.borrowDate = borrowDate;
     }
 
-    public Date getReturnDate() {
+    public Long getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(Long returnDate) {
         this.returnDate = returnDate;
     }
 
-    public Reserve(String userId, String itemId, List<Date> selectedDates, Date addon, Date borrowDate, Date returnDate) {
+    public Reserve(String userId, String itemId, List<Long> selectedDates, Long addon, Long borrowDate, Long returnDate) {
         this.userId = userId;
         this.itemId = itemId;
         this.selectedDates = selectedDates;
@@ -67,8 +73,8 @@ public class Reserve implements Serializable {
 
     private String userId;
     private String itemId;
-    private List<Date> selectedDates;
-    private Date addon;
-    private Date borrowDate;
-    private Date returnDate;
+    private List<Long> selectedDates;
+    private Long addon;
+    private Long borrowDate;
+    private Long returnDate;
 }
