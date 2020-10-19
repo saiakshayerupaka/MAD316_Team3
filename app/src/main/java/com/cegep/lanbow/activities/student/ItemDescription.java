@@ -16,13 +16,14 @@ import com.cegep.lanbow.models.Item;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 
-public class ItemDescription extends AppCompatActivity {
+public class  ItemDescription extends AppCompatActivity {
 
     private TextView ItemName;
     private TextView ItemDes;
     private Button Reserve;
     private ImageView Itemimg;
     private FirebaseStorage firebaseStorage;
+    private ImageView backbtn;
 
 
     @Override
@@ -40,6 +41,14 @@ public class ItemDescription extends AppCompatActivity {
 
         Itemimg = findViewById(R.id.itemImg);
 
+        backbtn = findViewById(R.id.backbtn);
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         firebaseStorage.getReference().child(item.getItemUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

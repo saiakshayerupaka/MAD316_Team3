@@ -90,7 +90,7 @@ public class UserlistAdapter extends BaseAdapter implements Filterable {
 
             for (int i = 0; i < count; i++) {
                 filterableStudent= list.get(i);
-                if (filterableStudent.getName().toLowerCase().contains(filterString)) {
+                if (filterableStudent.getName().toLowerCase().contains(filterString) || filterableStudent.getStudentId().toLowerCase().startsWith(filterString)) {
                     nlist.add(filterableStudent);
                 }
             }

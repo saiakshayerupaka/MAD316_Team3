@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="60dp"
-                android:text="Admin Login"
+                android:text="Info"
                 android:gravity="center"
                 android:textSize="20dp"></TextView>
         </LinearLayout>

@@ -11,9 +11,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
@@ -43,6 +46,8 @@ public class AddItem extends AppCompatActivity {
     private String imgurl;
     private EditText itemTitle,itemDescription;
     private Button AddItem;
+    private Spinner spinner;
+    private String itemType;
 
 
     @Override
@@ -80,13 +85,21 @@ public class AddItem extends AppCompatActivity {
         AddItem = findViewById(R.id.AddItem);
         itemImg = findViewById(R.id.itemImg);
 
+      spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.item_types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
+
         AddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(imgurl!=null && !itemTitle.getText().toString().equals("") && !itemDescription.getText().toString().equals(""))
 
-                database.getReference().child("Items").child(UUID.randomUUID().toString()).setValue(new Item(imgurl,itemTitle.getText().toString(),itemDescription.getText().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                database.getReference().child("Items").child(UUID.randomUUID().toString()).setValue(new Item(imgurl,itemTitle.getText().toString(),itemDescription.getText().toString(),spinner.getSelectedItem().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){

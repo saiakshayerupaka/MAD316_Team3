@@ -26,6 +26,9 @@ public class EmailVerify extends AppCompatActivity {
             finish();
         }
 
+
+
+
         resend = findViewById(R.id.resend);
         resend.setOnClickListener(new View.OnClickListener() {
             @Override
