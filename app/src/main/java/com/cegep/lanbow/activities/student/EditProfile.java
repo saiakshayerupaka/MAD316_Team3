@@ -99,7 +99,7 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
         uploadpic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                    upload();
             }
         });
 
@@ -157,7 +157,14 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
     }
 
     private void upload(){
-
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(
+                Intent.createChooser(
+                        intent,
+                        "Select Image from here..."),
+                234);
     }
 
 
