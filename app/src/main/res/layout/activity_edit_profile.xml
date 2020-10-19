@@ -40,6 +40,11 @@
             android:layout_height="match_parent"
             android:padding="10dp"
             android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Change Profile Pic"
+                android:id="@+id/uploadpic"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
