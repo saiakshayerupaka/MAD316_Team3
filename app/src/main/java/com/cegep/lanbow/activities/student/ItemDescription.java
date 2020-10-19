@@ -20,6 +20,7 @@ public class  ItemDescription extends AppCompatActivity {
 
     private TextView ItemName;
     private TextView ItemDes;
+    private TextView ItemType;
     private Button Reserve;
     private ImageView Itemimg;
     private FirebaseStorage firebaseStorage;
@@ -38,6 +39,9 @@ public class  ItemDescription extends AppCompatActivity {
         ItemName = findViewById(R.id.itemName);
         ItemDes = findViewById(R.id.itemDes);
         Reserve = findViewById(R.id.reserve);
+        ItemType = findViewById(R.id.item_type);
+
+        ItemType.setText(item.getItemType());
 
         Itemimg = findViewById(R.id.itemImg);
 

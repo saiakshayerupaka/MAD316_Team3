@@ -74,6 +74,7 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
 
         TextView itemName = v.findViewById(R.id.itemName);
         TextView itemId = v.findViewById(R.id.itemId);
+        TextView item_type = v.findViewById(R.id.item_type);
         final ImageView itemImg = v.findViewById(R.id.itemImg);
 
         firebaseStorage.getReference().child(filtereditems.get(position).getItemUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -85,6 +86,7 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
 
         itemId.setText(filtereditems.get(position).getItemId());
         itemName.setText(filtereditems.get(position).getItemName().toString());
+        item_type.setText(filtereditems.get(position).getItemType());
 
         return v;
 

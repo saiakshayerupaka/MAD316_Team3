@@ -66,7 +66,8 @@ public class Reservation extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot sna : snapshot.getChildren()) {
-                    Toast.makeText(Reservation.this,sna.getKey(),Toast.LENGTH_LONG).show();
+                    Reserve reserve = sna.getValue(Reserve.class);
+                    calendar.highlightDates(convertTimestamptoDates(reserve.getSelectedDates()));
                 }
             }
 
@@ -113,7 +114,6 @@ public class Reservation extends AppCompatActivity {
 
         calendar.init(today, nextyear) //
                 .inMode(CalendarPickerView.SelectionMode.RANGE);
-
         calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {

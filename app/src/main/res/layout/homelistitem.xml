@@ -27,12 +27,27 @@
                 android:text="User name"
                 android:id="@+id/itemName"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="User Id"
+                android:lines="1"
                 android:textColor="@color/colorPrimary"
                 android:id="@+id/itemId"/>
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/tag">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="item type"
+                    android:id="@+id/item_type"
+                    android:textColor="@color/colorAccent"
+                    android:padding="2dp"></TextView>
+            </LinearLayout>
         </LinearLayout>
          </LinearLayout>
 </LinearLayout>
