@@ -1,5 +1,6 @@
 package com.cegep.lanbow.activities.student;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.models.Item;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.savvi.rangedatepicker.CalendarPickerView;
@@ -17,6 +21,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import com.cegep.lanbow.models.*;
 
 public class Reservation extends AppCompatActivity {
 
@@ -26,12 +34,17 @@ public class Reservation extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button reserve;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
         database = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+
+        final Item item = (Item) getIntent().getSerializableExtra("data");
 
         calendar = findViewById(R.id.calendar_view);
         borrowdate = findViewById(R.id.borrowdate);
@@ -39,10 +52,26 @@ public class Reservation extends AppCompatActivity {
 
         reserve = findViewById(R.id.makereservation);
 
+
+
+
         reserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(calendar.getSelectedDates().size()>1){
+
+                   Reserve reserve = new Reserve(auth.getCurrentUser().getUid(),item.getItemId(),calendar.getSelectedDates(),new Date(),calendar.getSelectedDates().get(0),calendar.getSelectedDates().get(calendar.getSelectedDates().size()-1));
+                   database.getReference().child("Reserve").child(UUID.randomUUID().toString()).setValue(reserve).addOnCompleteListener(new OnCompleteListener<Void>() {
+                       @Override
+                       public void onComplete(@NonNull Task<Void> task) {
+                           if(task.isSuccessful()){
+
+                           }
+                           else{
+                               Toast.makeText(Reservation.this,task.getException().toString(),Toast.LENGTH_LONG).show();
+                           }
+                       }
+                   });
 
                 }
                 else{
