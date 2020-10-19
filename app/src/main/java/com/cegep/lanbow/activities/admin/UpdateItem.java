@@ -3,6 +3,7 @@ package com.cegep.lanbow.activities.admin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,9 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.bumptech.glide.Glide;
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Item;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class UpdateItem extends AppCompatActivity {
 
@@ -22,7 +26,7 @@ public class UpdateItem extends AppCompatActivity {
     private Button upload;
     private Button updateItem;
     private Spinner spinner;
-
+    private FirebaseStorage storage;
     private FirebaseDatabase database;
 
 
@@ -33,6 +37,8 @@ public class UpdateItem extends AppCompatActivity {
         setContentView(R.layout.activity_update_item);
 
         Item item = (Item) getIntent().getSerializableExtra("data");
+        storage = FirebaseStorage.getInstance();
+
 
 
 
@@ -47,6 +53,13 @@ public class UpdateItem extends AppCompatActivity {
         spinner.setSelection(adapter.getPosition(item.getItemType()));
 
         updateItem = findViewById(R.id.UpdateItem);
+
+        storage.getReference().child(item.getItemUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(UpdateItem.this).load(uri).into(itemImg);
+            }
+        });
 
 
         itemName.setText(item.getItemName());
