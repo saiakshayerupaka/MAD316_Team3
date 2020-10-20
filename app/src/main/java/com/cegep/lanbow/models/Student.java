@@ -61,6 +61,16 @@ public class Student implements Serializable {
     public String phonenumber;
     public String address;
 
+    public String getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(String profilepic) {
+        this.profilepic = profilepic;
+    }
+
+    public String profilepic;
+
     public String getProfileStatus() {
         return profileStatus;
     }

@@ -7,19 +7,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Student;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class UserProfile extends AppCompatActivity {
 
@@ -30,6 +34,8 @@ public class UserProfile extends AppCompatActivity {
     private Button editProfile;
     private ImageView backbtn;
     private Student student;
+    private ImageView profilepic;
+    private FirebaseStorage storage;
 
 
     @Override
@@ -39,6 +45,7 @@ public class UserProfile extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+        storage = FirebaseStorage.getInstance();
 
         backbtn = findViewById(R.id.backbtn);
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +54,9 @@ public class UserProfile extends AppCompatActivity {
                 finish();
             }
         });
+
+        profilepic = findViewById(R.id.profilePic);
+
 
         editProfile = findViewById(R.id.editProfile);
 
@@ -86,6 +96,15 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 student = snapshot.getValue(Student.class);
+
+                if(student.getProfilepic()!=null){
+                    storage.getReference().child(student.getProfilepic()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Glide.with(UserProfile.this).load(uri).into(profilepic);
+                        }
+                    });
+                }
                 name.setText(student.getName().toString());
                 studentid.setText(student.getStudentId().toString());
                 address.setText(student.getAddress().toString());

@@ -131,6 +131,9 @@ if(!email.getText().equals(s.getEmail())){
         childUpdates.put("name", name.getText().toString());
         childUpdates.put("address", address.getText().toString());
         childUpdates.put("phonenumber", phone.getText().toString());
+        if(!profileurl.equals("")) {
+            childUpdates.put("profilepic", profileurl);
+        }
 
         database.getReference().child("Users").child(auth.getCurrentUser().getUid()).updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
