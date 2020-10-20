@@ -79,7 +79,6 @@ public class BorrowListAdapter extends BaseAdapter {
         final TextView itemId = v.findViewById(R.id.itemId);
         TextView borrowDate = v.findViewById(R.id.borrowdate);
         TextView returnDate = v.findViewById(R.id.returndate);
-        final TextView userId = v.findViewById(R.id.userId);
         final ImageView itemImg = v.findViewById(R.id.itemImg);
 
         itemTitle.setText(filteredreserve.get(position).getItemName());
@@ -87,18 +86,6 @@ public class BorrowListAdapter extends BaseAdapter {
         borrowDate.setText(df.format(new Date(filteredreserve.get(position).getBorrowDate())));
         returnDate.setText(df.format(new Date(filteredreserve.get(position).getReturnDate())));
 
-        firebaseDatabase.getReference().child("Users").child(filteredreserve.get(position).getUserId()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Student student = snapshot.getValue(Student.class);
-                userId.setText(student.getStudentId());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         firebaseDatabase.getReference().child("Items").child(filteredreserve.get(position).getItemId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

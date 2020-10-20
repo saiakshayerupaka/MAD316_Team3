@@ -2,11 +2,18 @@ package com.cegep.lanbow.activities.student;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -24,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +43,7 @@ public class UserHome extends AppCompatActivity {
     private EditText search;
     private HomeItemListAdapter homeItemListAdapter;
     private List<Item> itemlist = new ArrayList<>();
+    private ImageView menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,16 @@ public class UserHome extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
+        menu = findViewById(R.id.menu);
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup(v);
+            }
+        });
+
 
         listview = findViewById(R.id.listview);
         search = findViewById(R.id.search);
@@ -114,5 +133,31 @@ public class UserHome extends AppCompatActivity {
 
 
 
+    }
+
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch ((item.getItemId())){
+                    case R.id.borrowhistory :
+                        startActivity(new Intent(UserHome.this,BorrowHistory.class));
+                        return true;
+                    case R.id.profile:
+                        startActivity(new Intent(UserHome.this,UserProfile.class));
+                        return true;
+                    case R.id.logout:
+                        finish();
+                        mAuth.signOut();
+                        return true;
+                }
+                return false;
+            }
+        });
+        inflater.inflate(R.menu.homemenu, popup.getMenu());
+        popup.show();
     }
 }
