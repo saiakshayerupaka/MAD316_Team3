@@ -62,8 +62,9 @@ public class Reserve implements Serializable {
         this.returnDate = returnDate;
     }
 
-    public Reserve(String userId, String itemId, List<Long> selectedDates, Long addon, Long borrowDate, Long returnDate) {
+    public Reserve(String itemName,String userId, String itemId, List<Long> selectedDates, Long addon, Long borrowDate, Long returnDate) {
         this.userId = userId;
+        this.itemName = itemName;
         this.itemId = itemId;
         this.selectedDates = selectedDates;
         this.addon = addon;
@@ -73,6 +74,16 @@ public class Reserve implements Serializable {
 
     private String userId;
     private String itemId;
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    private String itemName;
     private List<Long> selectedDates;
     private Long addon;
     private Long borrowDate;

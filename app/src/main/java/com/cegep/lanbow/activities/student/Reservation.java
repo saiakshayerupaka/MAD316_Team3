@@ -87,7 +87,7 @@ public class Reservation extends AppCompatActivity {
             public void onClick(View v) {
                 if(calendar.getSelectedDates().size()>1){
 
-                   Reserve reserve = new Reserve(auth.getCurrentUser().getUid(),item.getItemId(),convertDatestoTimestamp(calendar.getSelectedDates()),new Date().getTime(),calendar.getSelectedDates().get(0).getTime(),calendar.getSelectedDates().get(calendar.getSelectedDates().size()-1).getTime());
+                   Reserve reserve = new Reserve(item.getItemName(),auth.getCurrentUser().getUid(),item.getItemId(),convertDatestoTimestamp(calendar.getSelectedDates()),new Date().getTime(),calendar.getSelectedDates().get(0).getTime(),calendar.getSelectedDates().get(calendar.getSelectedDates().size()-1).getTime());
                    database.getReference().child("Reserve").child(UUID.randomUUID().toString()).setValue(reserve).addOnCompleteListener(new OnCompleteListener<Void>() {
                        @Override
                        public void onComplete(@NonNull Task<Void> task) {
