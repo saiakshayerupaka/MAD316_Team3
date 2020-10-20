@@ -75,7 +75,7 @@ public class BorrowListAdapter extends BaseAdapter {
             v = vi.inflate(R.layout.borrowlist, null);
         }
 
-        TextView itemTitle = v.findViewById(R.id.itemTitle);
+        TextView itemTitle = v.findViewById(R.id.itemName);
         final TextView itemId = v.findViewById(R.id.itemId);
         TextView borrowDate = v.findViewById(R.id.borrowdate);
         TextView returnDate = v.findViewById(R.id.returndate);
