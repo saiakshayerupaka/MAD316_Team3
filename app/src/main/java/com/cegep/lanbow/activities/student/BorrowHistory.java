@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -47,6 +49,22 @@ public class BorrowHistory extends AppCompatActivity {
         backbtn = findViewById(R.id.backbtn);
         listView = findViewById(R.id.listview);
         Search = findViewById(R.id.search);
+        Search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                borrowadapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         Toast.makeText(BorrowHistory.this,auth.getCurrentUser().getUid(),Toast.LENGTH_LONG).show();
 
         database.getReference().child("Reserve").orderByChild("userId").equalTo(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
