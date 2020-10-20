@@ -3,26 +3,23 @@ package com.cegep.lanbow.activities.student;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.activities.BorrowHistory;
 import com.cegep.lanbow.adapters.HomeItemListAdapter;
-import com.cegep.lanbow.adapters.ItemlistAdapter;
 import com.cegep.lanbow.models.Item;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +41,7 @@ public class UserHome extends AppCompatActivity {
     private HomeItemListAdapter homeItemListAdapter;
     private List<Item> itemlist = new ArrayList<>();
     private ImageView menu;
+    private LinearLayout noresult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +50,9 @@ public class UserHome extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
+        noresult = findViewById(R.id.noresult);
+        noresult.setVisibility(View.GONE);
 
         menu = findViewById(R.id.menu);
 
@@ -69,6 +70,13 @@ public class UserHome extends AppCompatActivity {
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                if(homeItemListAdapter.getCount()==0){
+                    noresult.setVisibility(View.VISIBLE);
+                }
+                else{
+                    noresult.setVisibility(View.GONE);
+                }
 
             }
 
@@ -109,19 +117,24 @@ public class UserHome extends AppCompatActivity {
                     item.setItemId(snap.getKey());
                     itemlist.add(item);
                 }
-                homeItemListAdapter = new HomeItemListAdapter(UserHome.this,itemlist);
-                listview.setAdapter(homeItemListAdapter);
-                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent in = new Intent(UserHome.this,ItemDescription.class);
-                        in.putExtra("data",homeItemListAdapter.getItem(position));
-                        startActivity(in);
-                    }
-                });
 
+                if(itemlist.size()==0){
+                    noresult.setVisibility(View.VISIBLE);
+                }
+                else {
+                    homeItemListAdapter = new HomeItemListAdapter(UserHome.this, itemlist);
+                    listview.setAdapter(homeItemListAdapter);
+                    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent in = new Intent(UserHome.this, ItemDescription.class);
+                            in.putExtra("data", homeItemListAdapter.getItem(position));
+                            startActivity(in);
+                        }
+                    });
+                    noresult.setVisibility(View.GONE);
 
-
+                }
             }
 
             @Override
@@ -144,7 +157,7 @@ public class UserHome extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch ((item.getItemId())){
                     case R.id.borrowhistory :
-                        startActivity(new Intent(UserHome.this,BorrowHistory.class));
+                        startActivity(new Intent(UserHome.this, BorrowHistory.class));
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(UserHome.this,UserProfile.class));

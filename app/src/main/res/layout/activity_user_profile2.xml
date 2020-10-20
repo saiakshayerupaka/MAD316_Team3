@@ -30,6 +30,16 @@
                 android:text="Profile"
                 android:gravity="center"
                 android:textSize="20dp"></TextView>
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:tint="#ccc"
+                android:layout_marginLeft="-60dp"
+                android:src="@drawable/baseline_more_vert_black_48dp"
+                android:padding="13dp"
+                android:id="@+id/more">
+
+            </ImageView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,9 +150,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/colorSecondary"
-                android:text="Block User"
+                android:text="View Borrow History"
                 android:textColor="@color/colorPrimary"
-                android:id="@+id/block"
+                android:id="@+id/borrowhistory"
                 android:layout_marginTop="40dp"/>
 
 

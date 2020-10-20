@@ -52,13 +52,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:elevation="4dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/whitecard"
             android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="13dp"
+                android:tint="#aaa"
+                android:src="@drawable/baseline_search_black_36dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Search"
+                android:background="#00000000"
                 android:id="@+id/search"
-                android:background="#EEE"
                 android:padding="15dp"/>
         </LinearLayout>
         <LinearLayout
@@ -66,11 +75,24 @@
             android:layout_height="match_parent">
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/item_list"
                 android:divider="@null"
 
                 />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                android:id="@+id/noresult"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No Result Found"/>
+            </LinearLayout>
         </LinearLayout>
         </LinearLayout>
     </LinearLayout>

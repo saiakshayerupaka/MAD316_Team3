@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.cegep.lanbow.R;
@@ -34,6 +35,7 @@ public class SearchUsers extends AppCompatActivity {
     private EditText search;
     private UserlistAdapter userlistAdapter;
     private ImageView back;
+    private LinearLayout noresult;
 
 
     @Override
@@ -50,6 +52,9 @@ public class SearchUsers extends AppCompatActivity {
                 finish();
             }
         });
+        noresult = findViewById(R.id.noresult);
+
+        noresult.setVisibility(View.GONE);
 
 
         listView = findViewById(R.id.listview);
@@ -59,11 +64,18 @@ public class SearchUsers extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 userlistAdapter.getFilter().filter(s);
+                if(userlistAdapter.getCount()==0){
+                    noresult.setVisibility(View.VISIBLE);
+                }
+                else{
+                    noresult.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -86,7 +98,11 @@ public class SearchUsers extends AppCompatActivity {
                     students.add(s);
                 }
 
-                if(students!=null) {
+                if(students.size()==0){
+                    noresult.setVisibility(View.VISIBLE);
+                }
+                else{
+                    noresult.setVisibility(View.GONE);
                     userlistAdapter = new UserlistAdapter(SearchUsers.this, students);
                     listView.setAdapter(userlistAdapter);
 

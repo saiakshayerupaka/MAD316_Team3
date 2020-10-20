@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cegep.lanbow.R;
+import com.cegep.lanbow.activities.BorrowHistory;
 import com.cegep.lanbow.models.Item;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,8 +27,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.UUID;
@@ -93,7 +92,7 @@ public class Reservation extends AppCompatActivity {
                        @Override
                        public void onComplete(@NonNull Task<Void> task) {
                            if(task.isSuccessful()){
-                               startActivity(new Intent(Reservation.this,BorrowHistory.class));
+                               startActivity(new Intent(Reservation.this, BorrowHistory.class));
                            }
                            else{
                                Toast.makeText(Reservation.this,task.getException().toString(),Toast.LENGTH_LONG).show();

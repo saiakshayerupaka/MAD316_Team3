@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class Items extends AppCompatActivity {
     private TextView additem;
     private ImageView back;
     private EditText search;
+    private LinearLayout noresult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class Items extends AppCompatActivity {
         itemlist = findViewById(R.id.item_list);
 
         database = FirebaseDatabase.getInstance();
+        noresult = findViewById(R.id.noresult);
+        noresult.setVisibility(View.GONE);
+
 
         additem = findViewById(R.id.additem);
         additem.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +69,12 @@ public class Items extends AppCompatActivity {
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if(itemlistAdapter.getCount()==0){
+                    noresult.setVisibility(View.VISIBLE);
+                }
+                else{
+                    noresult.setVisibility(View.GONE);
+                }
 
             }
 
@@ -92,17 +103,23 @@ itemlistAdapter.getFilter().filter(s);
 
                 }
 
-                itemlistAdapter = new ItemlistAdapter(Items.this,items);
-                itemlist.setAdapter(itemlistAdapter);
+                if(items.size()==0){
+                    noresult.setVisibility(View.VISIBLE);
+                }
+                else {
+                    noresult.setVisibility(View.GONE);
+                    itemlistAdapter = new ItemlistAdapter(Items.this, items);
+                    itemlist.setAdapter(itemlistAdapter);
 
-                itemlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent in = new Intent(Items.this,UpdateItem.class);
-                        in.putExtra("data",itemlistAdapter.getItem(position));
-                        startActivity(in);
-                    }
-                });
+                    itemlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent in = new Intent(Items.this, UpdateItem.class);
+                            in.putExtra("data", itemlistAdapter.getItem(position));
+                            startActivity(in);
+                        }
+                    });
+                }
 
             }
 
