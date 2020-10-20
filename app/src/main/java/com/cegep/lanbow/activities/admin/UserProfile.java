@@ -84,7 +84,7 @@ public class UserProfile extends AppCompatActivity {
         address.setText(s.getAddress());
 
         if(s.getProfilepic()!=null){
-            profilepic.clearColorFilter();
+            profilepic.setColorFilter(null);
             storage.getReference().child(s.getProfilepic()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
