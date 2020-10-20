@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,10 +27,11 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BorrowListAdapter extends BaseAdapter {
+public class BorrowListAdapter extends BaseAdapter implements Filterable {
 
     private List<Reserve> originalreserve;
     private List<Reserve> filteredreserve;
@@ -36,6 +39,8 @@ public class BorrowListAdapter extends BaseAdapter {
     private FirebaseStorage firebaseStorage;
     private FirebaseDatabase firebaseDatabase;
     private DateFormat df;
+    private ItemFilter mFilter = new ItemFilter();
+
 
 
     public BorrowListAdapter(Context context, List<Reserve> reserves) {
@@ -110,5 +115,47 @@ public class BorrowListAdapter extends BaseAdapter {
 
 
         return v;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return mFilter;
+    }
+
+    private class ItemFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            String filterString = constraint.toString().toLowerCase();
+
+            FilterResults results = new FilterResults();
+
+            final List<Reserve> list = originalreserve;
+
+            int count = list.size();
+            final ArrayList<Reserve> nlist = new ArrayList<Reserve>(count);
+
+            Reserve filterablereserve;
+
+            for (int i = 0; i < count; i++) {
+                filterablereserve = list.get(i);
+                if (filterablereserve.getItemName().toLowerCase().contains(filterString) || filterablereserve.getItemId().toLowerCase().startsWith(filterString)) {
+                    nlist.add(filterablereserve);
+                }
+            }
+
+            results.values = nlist;
+            results.count = nlist.size();
+
+            return results;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            filteredreserve= (ArrayList<Reserve>) results.values;
+            notifyDataSetChanged();
+        }
+
     }
 }
