@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,13 +15,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.activities.BorrowHistory;
 import com.cegep.lanbow.models.Student;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class UserProfile extends AppCompatActivity {
 
@@ -32,6 +36,8 @@ public class UserProfile extends AppCompatActivity {
     private ImageView more;
     private Student s;
     private Button borrowhistory;
+    private ImageView profilepic;
+    private FirebaseStorage storage;
 
 
     @Override
@@ -40,6 +46,8 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile2);
 
         database = FirebaseDatabase.getInstance();
+        profilepic = findViewById(R.id.profilePic);
+        storage = FirebaseStorage.getInstance();
 
 
         s = (Student) getIntent().getSerializableExtra("data");
@@ -74,6 +82,16 @@ public class UserProfile extends AppCompatActivity {
         studentid.setText(s.getStudentId());
         phone.setText(s.getPhonenumber());
         address.setText(s.getAddress());
+
+        if(s.getProfilepic()!=null){
+            profilepic.clearColorFilter();
+            storage.getReference().child(s.getProfilepic()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(UserProfile.this).load(uri).into(profilepic);
+                }
+            });
+        }
 
         borrowhistory.setOnClickListener(new View.OnClickListener() {
             @Override

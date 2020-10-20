@@ -96,8 +96,8 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 student = snapshot.getValue(Student.class);
-                profilepic.clearColorFilter();
                 if(student.getProfilepic()!=null){
+                    profilepic.clearColorFilter();
                     storage.getReference().child(student.getProfilepic()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
