@@ -3,6 +3,7 @@ package com.cegep.lanbow.activities.student;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -92,7 +93,7 @@ public class Reservation extends AppCompatActivity {
                        @Override
                        public void onComplete(@NonNull Task<Void> task) {
                            if(task.isSuccessful()){
-
+                               startActivity(new Intent(Reservation.this,BorrowHistory.class));
                            }
                            else{
                                Toast.makeText(Reservation.this,task.getException().toString(),Toast.LENGTH_LONG).show();
