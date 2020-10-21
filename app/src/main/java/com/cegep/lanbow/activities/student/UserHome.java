@@ -108,7 +108,7 @@ public class UserHome extends AppCompatActivity {
             }
         });
 
-        database.getReference().child("Items").addValueEventListener(new ValueEventListener() {
+        database.getReference().child("Items").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 itemlist.clear();

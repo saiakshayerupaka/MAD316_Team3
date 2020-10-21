@@ -24,7 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ItemlistAdapter extends BaseAdapter implements Filterable {
 
@@ -33,6 +35,8 @@ public class ItemlistAdapter extends BaseAdapter implements Filterable {
     private Context mContext;
     private FirebaseStorage firebaseStorage;
     private FirebaseDatabase firebaseDatabase;
+
+    Map<Integer,View> views = new HashMap<Integer,View>();
 
     private ItemFilter mFilter = new ItemFilter();
 
@@ -60,37 +64,52 @@ public class ItemlistAdapter extends BaseAdapter implements Filterable {
         return position;
     }
 
+    private class ViewHolder{
+        TextView itemName;
+        TextView itemId;
+        ImageView itemImg;
+        TextView item_type;
+        ImageView delete;
+    }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        View v = convertView;
 
-        if (v == null) {
+        View v = convertView;
+        ViewHolder holder = new ViewHolder();
+
+
             LayoutInflater vi;
             vi = LayoutInflater.from(mContext);
             v = vi.inflate(R.layout.itemlist, null);
+            holder.itemName = v.findViewById(R.id.itemName);
+            holder.itemId = v.findViewById(R.id.itemId);
+            holder.itemImg = v.findViewById(R.id.itemImg);
+            holder.item_type = v.findViewById(R.id.item_type);
+            holder.delete = v.findViewById(R.id.removeItem);
+
+
+
+
+        holder.item_type.setText(filtereditems.get(position).getItemType());
+
+        final ViewHolder finalHolder = holder;
+
+        if(finalHolder.itemImg.getTag()==null) {
+            firebaseStorage.getReference().child(filtereditems.get(position).getItemUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(mContext).load(uri).into(finalHolder.itemImg);
+                }
+            });
+            finalHolder.itemImg.setTag(true);
         }
 
+       holder.itemId.setText(filtereditems.get(position).getItemId());
 
-        TextView itemName = v.findViewById(R.id.itemName);
-        TextView itemId = v.findViewById(R.id.itemId);
-        final ImageView itemImg = v.findViewById(R.id.itemImg);
-        TextView item_type = v.findViewById(R.id.item_type);
-        ImageView delete = v.findViewById(R.id.removeItem);
-
-        item_type.setText(filtereditems.get(position).getItemType());
-
-       firebaseStorage.getReference().child(filtereditems.get(position).getItemUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-           @Override
-           public void onSuccess(Uri uri) {
-               Glide.with(mContext).load(uri).into(itemImg);
-           }
-       });
-
-       itemId.setText(filtereditems.get(position).getItemId());
-
-        itemName.setText(filtereditems.get(position).getItemName().toString());
-        delete.setOnClickListener(new View.OnClickListener() {
+        holder.itemName.setText(filtereditems.get(position).getItemName().toString());
+        holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -107,7 +126,7 @@ public class ItemlistAdapter extends BaseAdapter implements Filterable {
             }
         });
 
-
+        v.setTag(holder);
         return v;
 
     }

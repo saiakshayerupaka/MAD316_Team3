@@ -105,6 +105,9 @@ public class UserProfile extends AppCompatActivity {
                         }
                     });
                 }
+                else {
+                    profilepic.setColorFilter(getResources().getColor(R.color.light));
+                }
                 name.setText(student.getName().toString());
                 studentid.setText(student.getStudentId().toString());
                 address.setText(student.getAddress().toString());

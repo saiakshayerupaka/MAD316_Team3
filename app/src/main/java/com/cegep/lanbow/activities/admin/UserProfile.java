@@ -46,7 +46,7 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile2);
 
         database = FirebaseDatabase.getInstance();
-        profilepic = findViewById(R.id.profilePic);
+        profilepic = findViewById(R.id.profilepic);
         storage = FirebaseStorage.getInstance();
 
 
@@ -83,14 +83,18 @@ public class UserProfile extends AppCompatActivity {
         phone.setText(s.getPhonenumber());
         address.setText(s.getAddress());
 
+
         if(s.getProfilepic()!=null){
-            profilepic.setColorFilter(null);
             storage.getReference().child(s.getProfilepic()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     Glide.with(UserProfile.this).load(uri).into(profilepic);
                 }
             });
+        }
+        else{
+            profilepic.setColorFilter(getResources().getColor(R.color.light));
+
         }
 
         borrowhistory.setOnClickListener(new View.OnClickListener() {

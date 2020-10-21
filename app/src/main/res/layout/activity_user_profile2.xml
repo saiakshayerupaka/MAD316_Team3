@@ -60,7 +60,6 @@
                 android:layout_marginTop="50dp"
                 android:layout_height="100dp"
                 android:id="@+id/profilepic"
-                android:tint="#aaa"
                 android:src="@drawable/baseline_account_circle_black_48dp"/>
             <TextView
                 android:layout_width="match_parent"
