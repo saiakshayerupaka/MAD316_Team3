@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +42,7 @@ public class Reservation extends AppCompatActivity {
     private FirebaseDatabase database;
     private FirebaseAuth auth;
     private DateFormat df;
+    private ImageView backbtn;
 
     private Button reserve;
 
@@ -52,7 +55,16 @@ public class Reservation extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
-        df = new SimpleDateFormat("MMM, d yyyy");;
+        df = new SimpleDateFormat("MMM, d yyyy");
+
+        backbtn = findViewById(R.id.backbtn);
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         final Item item = (Item) getIntent().getSerializableExtra("data");
 

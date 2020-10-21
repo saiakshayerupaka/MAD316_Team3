@@ -153,7 +153,7 @@ public class ItemlistAdapter extends BaseAdapter implements Filterable {
 
             for (int i = 0; i < count; i++) {
                 filterableItem = list.get(i);
-                if (filterableItem.getItemName().toLowerCase().contains(filterString) || filterableItem.getItemId().toLowerCase().startsWith(filterString)) {
+                if (filterableItem.getItemName().toLowerCase().contains(filterString) || filterableItem.getItemId().toLowerCase().startsWith(filterString) || filterableItem.getItemType().toLowerCase().startsWith(filterString)) {
                     nlist.add(filterableItem);
                 }
             }

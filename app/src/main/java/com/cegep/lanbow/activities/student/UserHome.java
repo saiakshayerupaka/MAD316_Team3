@@ -71,17 +71,18 @@ public class UserHome extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(homeItemListAdapter.getCount()==0){
                     noresult.setVisibility(View.VISIBLE);
                 }
                 else{
                     noresult.setVisibility(View.GONE);
                 }
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 homeItemListAdapter.getFilter().filter(s);
             }
 

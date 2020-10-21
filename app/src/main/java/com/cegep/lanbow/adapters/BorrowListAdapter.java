@@ -70,26 +70,35 @@ public class BorrowListAdapter extends BaseAdapter implements Filterable {
         return position;
     }
 
+    private class ViewHolder{
+        TextView itemTitle;
+        TextView itemId;
+        TextView borrowDate;
+        TextView returnDate;
+        ImageView itemImg;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
 
-        if (v == null) {
+        final ViewHolder viewHolder = new ViewHolder();
+
+
             LayoutInflater vi;
             vi = LayoutInflater.from(mContext);
             v = vi.inflate(R.layout.borrowlist, null);
-        }
 
-        TextView itemTitle = v.findViewById(R.id.itemName);
-        final TextView itemId = v.findViewById(R.id.itemId);
-        TextView borrowDate = v.findViewById(R.id.borrowdate);
-        TextView returnDate = v.findViewById(R.id.returndate);
-        final ImageView itemImg = v.findViewById(R.id.itemImg);
+        viewHolder.itemTitle = v.findViewById(R.id.itemName);
+        viewHolder.itemId = v.findViewById(R.id.itemId);
+        viewHolder.borrowDate = v.findViewById(R.id.borrowdate);
+        viewHolder.returnDate = v.findViewById(R.id.returndate);
+        viewHolder.itemImg = v.findViewById(R.id.itemImg);
 
-        itemTitle.setText(filteredreserve.get(position).getItemName());
-        itemId.setText(filteredreserve.get(position).getItemId());
-        borrowDate.setText(df.format(new Date(filteredreserve.get(position).getBorrowDate())));
-        returnDate.setText(df.format(new Date(filteredreserve.get(position).getReturnDate())));
+        viewHolder.itemTitle.setText(filteredreserve.get(position).getItemName());
+        viewHolder.itemId.setText(filteredreserve.get(position).getItemId());
+        viewHolder.borrowDate.setText(df.format(new Date(filteredreserve.get(position).getBorrowDate())));
+        viewHolder.returnDate.setText(df.format(new Date(filteredreserve.get(position).getReturnDate())));
 
 
         firebaseDatabase.getReference().child("Items").child(filteredreserve.get(position).getItemId()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -100,7 +109,7 @@ public class BorrowListAdapter extends BaseAdapter implements Filterable {
                 firebaseStorage.getReference().child(item.getItemUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Glide.with(mContext).load(uri).into(itemImg);
+                        Glide.with(mContext).load(uri).into(viewHolder.itemImg);
                     }
                 });
             }
@@ -111,6 +120,7 @@ public class BorrowListAdapter extends BaseAdapter implements Filterable {
             }
         });
 
+        v.setTag(viewHolder);
 
 
 
@@ -121,6 +131,8 @@ public class BorrowListAdapter extends BaseAdapter implements Filterable {
     public Filter getFilter() {
         return mFilter;
     }
+
+
 
     private class ItemFilter extends Filter {
         @Override
