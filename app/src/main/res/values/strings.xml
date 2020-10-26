@@ -7,4 +7,13 @@
         <item>Acessories</item>
         <item>Charger</item>
     </string-array>
+
+    <string-array name="message_types">
+        <item>Reservation issue</item>
+        <item>Technical issue</item>
+        <item>other  issue</item>
+    </string-array>
+
+
+
 </resources>
