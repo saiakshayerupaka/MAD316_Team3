@@ -163,6 +163,9 @@ public class UserHome extends AppCompatActivity {
                     case R.id.profile:
                         startActivity(new Intent(UserHome.this,UserProfile.class));
                         return true;
+                    case R.id.support:
+                        startActivity(new Intent(UserHome.this,Support.class));
+                        return true;
                     case R.id.logout:
                         finish();
                         mAuth.signOut();
