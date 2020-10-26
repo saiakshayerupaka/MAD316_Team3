@@ -1,8 +1,10 @@
 package com.cegep.lanbow.activities.student;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -58,6 +60,22 @@ public class Reservation extends AppCompatActivity {
         df = new SimpleDateFormat("MMM, d yyyy");
 
         backbtn = findViewById(R.id.backbtn);
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(Reservation.this);
+        builder1.setMessage("Confirm your Reservation");
+        builder1.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder1.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+dialog.dismiss();
+            }
+        });
+
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
