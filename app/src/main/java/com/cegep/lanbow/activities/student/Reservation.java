@@ -45,8 +45,10 @@ public class Reservation extends AppCompatActivity {
     private FirebaseAuth auth;
     private DateFormat df;
     private ImageView backbtn;
+    private AlertDialog.Builder builder1;
 
     private Button reserve;
+    private Item item;
 
 
 
@@ -61,12 +63,12 @@ public class Reservation extends AppCompatActivity {
 
         backbtn = findViewById(R.id.backbtn);
 
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(Reservation.this);
+        builder1 = new AlertDialog.Builder(Reservation.this);
         builder1.setMessage("Confirm your Reservation");
         builder1.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+makeReserve();
             }
         });
         builder1.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -84,7 +86,7 @@ dialog.dismiss();
             }
         });
 
-        final Item item = (Item) getIntent().getSerializableExtra("data");
+         item = (Item) getIntent().getSerializableExtra("data");
 
         calendar = findViewById(R.id.calendar_view);
         borrowdate = findViewById(R.id.borrowdate);
@@ -115,25 +117,8 @@ dialog.dismiss();
         reserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(calendar.getSelectedDates().size()>1){
-
-                   Reserve reserve = new Reserve(item.getItemName(),auth.getCurrentUser().getUid(),item.getItemId(),convertDatestoTimestamp(calendar.getSelectedDates()),new Date().getTime(),calendar.getSelectedDates().get(0).getTime(),calendar.getSelectedDates().get(calendar.getSelectedDates().size()-1).getTime());
-                   database.getReference().child("Reserve").child(UUID.randomUUID().toString()).setValue(reserve).addOnCompleteListener(new OnCompleteListener<Void>() {
-                       @Override
-                       public void onComplete(@NonNull Task<Void> task) {
-                           if(task.isSuccessful()){
-                               startActivity(new Intent(Reservation.this, BorrowHistory.class));
-                           }
-                           else{
-                               Toast.makeText(Reservation.this,task.getException().toString(),Toast.LENGTH_LONG).show();
-                           }
-                       }
-                   });
-
-                }
-                else{
-                    Toast.makeText(Reservation.this,"Please select borrow and return date!!!",Toast.LENGTH_LONG).show();
-                }
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
 
@@ -240,5 +225,27 @@ dialog.dismiss();
 
         return newdates;
 
+    }
+
+    private void makeReserve(){
+        if(calendar.getSelectedDates().size()>1){
+
+            Reserve reserve = new Reserve(item.getItemName(),auth.getCurrentUser().getUid(),item.getItemId(),convertDatestoTimestamp(calendar.getSelectedDates()),new Date().getTime(),calendar.getSelectedDates().get(0).getTime(),calendar.getSelectedDates().get(calendar.getSelectedDates().size()-1).getTime());
+            database.getReference().child("Reserve").child(UUID.randomUUID().toString()).setValue(reserve).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        startActivity(new Intent(Reservation.this, BorrowHistory.class));
+                    }
+                    else{
+                        Toast.makeText(Reservation.this,task.getException().toString(),Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+        }
+        else{
+            Toast.makeText(Reservation.this,"Please select borrow and return date!!!",Toast.LENGTH_LONG).show();
+        }
     }
 }
