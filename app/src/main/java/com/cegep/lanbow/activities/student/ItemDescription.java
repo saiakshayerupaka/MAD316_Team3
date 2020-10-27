@@ -71,6 +71,7 @@ public class  ItemDescription extends AppCompatActivity {
                 Intent in = new Intent(ItemDescription.this,Reservation.class);
                 in.putExtra("data",item);
                 startActivity(in);
+                finish();
 
             }
         });

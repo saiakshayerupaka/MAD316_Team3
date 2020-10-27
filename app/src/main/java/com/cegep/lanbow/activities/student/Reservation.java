@@ -46,6 +46,7 @@ public class Reservation extends AppCompatActivity {
     private DateFormat df;
     private ImageView backbtn;
     private AlertDialog.Builder builder1;
+    private List<Date> borrowdates = new ArrayList<>();
 
     private Button reserve;
     private Item item;
@@ -69,6 +70,7 @@ public class Reservation extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 makeReserve();
+
             }
         });
         builder1.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -97,8 +99,11 @@ dialog.dismiss();
         database.getReference().child("Reserve").orderByChild("itemId").equalTo(item.getItemId()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                borrowdates.clear();
                 for(DataSnapshot sna : snapshot.getChildren()) {
                     Reserve reserve = sna.getValue(Reserve.class);
+
+                    borrowdates.add(new Date(reserve.getBorrowDate()));
                     calendar.highlightDates(convertTimestamptoDates(reserve.getSelectedDates()));
                 }
             }
@@ -157,29 +162,36 @@ dialog.dismiss();
             @Override
             public boolean isDateSelectable(Date date) {
 
-
-                if(calendar.getSelectedDates().size()==0){
-                    return true;
-                }
-                else {
-
-                    Calendar c1 = Calendar.getInstance();
-                    c1.setTime(calendar.getSelectedDates().get(0));
-                    c1.add(Calendar.DATE, 5);
+                if(checkMonths(date)) {
 
 
-                    Calendar c2 = Calendar.getInstance();
-                    c2.setTime(date);
-                    if (c2.getTimeInMillis() < c1.getTimeInMillis()) {
+                    if (calendar.getSelectedDates().size() == 0) {
                         return true;
                     } else {
-                        if (calendar.getSelectedDates().size() > 1) {
-                            return true;
-                        }
-                        Toast.makeText(Reservation.this,"You can select max 5 days",Toast.LENGTH_LONG).show();
 
-                        return false;
+                        Calendar c1 = Calendar.getInstance();
+                        c1.setTime(calendar.getSelectedDates().get(0));
+                        c1.add(Calendar.DATE, 5);
+
+
+                        Calendar c2 = Calendar.getInstance();
+                        c2.setTime(date);
+                        if (c2.getTimeInMillis() < c1.getTimeInMillis()) {
+                            return true;
+                        } else {
+                            if (calendar.getSelectedDates().size() > 1) {
+                                return true;
+                            }
+                            Toast.makeText(Reservation.this, "You can select max 5 days", Toast.LENGTH_LONG).show();
+
+                            return false;
+                        }
                     }
+                }
+                else{
+                    Toast.makeText(Reservation.this,"Sorry You can reserve item 2 times in a month",Toast.LENGTH_LONG).show();
+
+                    return false;
                 }
             }
         });
@@ -236,6 +248,7 @@ dialog.dismiss();
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         startActivity(new Intent(Reservation.this, BorrowHistory.class));
+                        finish();
                     }
                     else{
                         Toast.makeText(Reservation.this,task.getException().toString(),Toast.LENGTH_LONG).show();
@@ -246,6 +259,28 @@ dialog.dismiss();
         }
         else{
             Toast.makeText(Reservation.this,"Please select borrow and return date!!!",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private boolean checkMonths(Date dd){
+        int count =0;
+        if(borrowdates.size()!=0){
+           ListIterator<Date> dates = borrowdates.listIterator();
+
+           while (dates.hasNext()){
+               Date date = dates.next();
+               if(date.getMonth() == dd.getMonth()){
+                   count = count + 1;
+               }
+           }
+        }
+//        Toast.makeText(Reservation.this,String.valueOf(count),Toast.LENGTH_LONG).show();
+
+        if(count>=2){
+            return false;
+        }
+        else{
+            return true;
         }
     }
 }
