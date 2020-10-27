@@ -84,6 +84,19 @@ public class AdminHome extends AppCompatActivity {
             }
         });
 
+        database.getReference().child("Items").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int i = (int) snapshot.getChildrenCount();
+                countItem.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         countMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
