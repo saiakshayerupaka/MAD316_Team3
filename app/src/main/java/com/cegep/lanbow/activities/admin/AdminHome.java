@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Admin;
+import com.cegep.lanbow.models.Message;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +27,7 @@ public class AdminHome extends AppCompatActivity {
     private TextView countUser,countItem;
     private FirebaseDatabase database;
     private LinearLayout item,searchUser;
+    private TextView countMessage,countNewMessage;
 
 
 
@@ -39,6 +41,9 @@ public class AdminHome extends AppCompatActivity {
 
         countUser = findViewById(R.id.countUser);
         countItem = findViewById(R.id.countItem);
+
+        countMessage = findViewById(R.id.countMessage);
+        countNewMessage = findViewById(R.id.countNewMessage);
 
         searchUser = findViewById(R.id.searchUser);
 
@@ -79,11 +84,20 @@ public class AdminHome extends AppCompatActivity {
             }
         });
 
-        database.getReference().child("Items").addValueEventListener(new ValueEventListener() {
+        countMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in =new Intent(AdminHome.this, MessageList.class);
+                startActivity(in);
+            }
+        });
+
+
+        database.getReference().child("Messages").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int i = (int) snapshot.getChildrenCount();
-                countItem.setText(String.valueOf(i));
+                countMessage.setText(String.valueOf(i));
             }
 
             @Override
