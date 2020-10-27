@@ -61,4 +61,14 @@ public class Message implements Serializable {
     private String messageStatus;
     private String messageBy;
 
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    private String studentId;
+
 }
