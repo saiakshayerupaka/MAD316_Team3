@@ -101,7 +101,7 @@ public class AdminHome extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int i = (int) snapshot.getChildrenCount();
-                countNewMessage.setText(String.valueOf(i));
+                countNewMessage.setText(String.valueOf(i) + " new");
             }
 
             @Override

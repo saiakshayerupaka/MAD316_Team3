@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
@@ -104,6 +106,7 @@ dialog.dismiss();
                     Reserve reserve = sna.getValue(Reserve.class);
 
                     borrowdates.add(new Date(reserve.getBorrowDate()));
+                    Log.d("dates",convertTimestamptoDates(reserve.getSelectedDates()).toString());
                     calendar.highlightDates(convertTimestamptoDates(reserve.getSelectedDates()));
                 }
             }
@@ -223,7 +226,7 @@ dialog.dismiss();
     }
 
     private List<Date> convertTimestamptoDates(List<Long> dates){
-
+        Collections.sort(dates);
         ListIterator<Long> iterator = dates.listIterator();
 
         List<Date> newdates = new ArrayList<>();

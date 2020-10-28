@@ -3,10 +3,12 @@ package com.cegep.lanbow.activities.admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -78,8 +80,18 @@ messagelistAdapter.getFilter().filter(s);
                 }
 
 
+
                 messagelistAdapter = new MessagelistAdapter(messages,MessageList.this);
                 listView.setAdapter(messagelistAdapter);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(MessageList.this,MessageInfo.class);
+                        intent.putExtra("data",messagelistAdapter.getItem(position));
+                        startActivity(intent);
+                    }
+                });
 
 
 

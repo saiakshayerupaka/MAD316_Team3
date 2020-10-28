@@ -85,7 +85,6 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
 
 
        holder.itemName = v.findViewById(R.id.itemName);
-        holder.itemId = v.findViewById(R.id.itemId);
         holder.item_type = v.findViewById(R.id.item_type);
         holder.itemImg = v.findViewById(R.id.itemImg);
         final ViewHolder finalHolder = holder;
@@ -101,7 +100,6 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
             holder.itemImg.setTag(true);
         }
 
-        holder.itemId.setText(filtereditems.get(position).getItemId());
         holder.itemName.setText(filtereditems.get(position).getItemName().toString());
         holder.item_type.setText(filtereditems.get(position).getItemType());
 
