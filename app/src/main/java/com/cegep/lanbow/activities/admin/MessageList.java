@@ -72,11 +72,15 @@ messagelistAdapter.getFilter().filter(s);
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 messages.clear();
                 for(DataSnapshot snap : snapshot.getChildren()){
-                    messages.add(snap.getValue(Message.class));
+                    Message msg = snap.getValue(Message.class);
+                    msg.setMessageId(snap.getKey());
+                    messages.add(msg);
                 }
+
 
                 messagelistAdapter = new MessagelistAdapter(messages,MessageList.this);
                 listView.setAdapter(messagelistAdapter);
+
 
 
             }
