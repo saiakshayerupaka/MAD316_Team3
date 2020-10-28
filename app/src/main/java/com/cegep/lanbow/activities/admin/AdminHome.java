@@ -97,6 +97,21 @@ public class AdminHome extends AppCompatActivity {
             }
         });
 
+        database.getReference().child("Messages").orderByChild("messageStatus").equalTo("unread").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int i = (int) snapshot.getChildrenCount();
+                countNewMessage.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
         countMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
