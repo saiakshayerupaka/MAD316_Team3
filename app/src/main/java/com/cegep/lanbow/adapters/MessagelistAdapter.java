@@ -89,8 +89,6 @@ public class MessagelistAdapter extends BaseAdapter implements Filterable {
             }
         });
 
-
-
         MessageTitle.setText(filteredmessages.get(position).getMessageTitle());
         issueType.setText(filteredmessages.get(position).getMessageType());
 

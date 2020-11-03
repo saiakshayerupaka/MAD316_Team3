@@ -6,17 +6,21 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.admin.MessageInfo"></activity>
+        <activity android:name=".activities.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.admin.MessageInfo" />
         <activity android:name=".activities.admin.MessageList" />
         <activity android:name=".activities.student.Support" />
         <activity android:name=".activities.BorrowHistory" />
         <activity android:name=".activities.admin.UpdateItem" />
-        <activity android:name=".activities.student.EditProfile" >
-
-        </activity>
+        <activity android:name=".activities.student.EditProfile"></activity>
         <activity android:name=".activities.student.ItemDescription" />
         <activity android:name=".activities.student.PasswordReset" />
         <activity android:name=".activities.student.Reservation" />
@@ -29,16 +33,10 @@
         <activity android:name=".activities.admin.AdminHome" />
         <activity android:name=".activities.student.UserHome" />
         <activity android:name=".activities.admin.AdminLogin" />
-        <activity android:name=".activities.student.StudentRegister">
-
-        </activity>
+        <activity android:name=".activities.student.StudentRegister"></activity>
         <activity android:name=".activities.student.StudentLogin" />
         <activity android:name=".activities.GettingStarted">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
