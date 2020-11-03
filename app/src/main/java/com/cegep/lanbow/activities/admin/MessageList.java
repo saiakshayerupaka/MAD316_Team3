@@ -59,7 +59,7 @@ public class MessageList extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-messagelistAdapter.getFilter().filter(s);
+                messagelistAdapter.getFilter().filter(s);
             }
 
             @Override
@@ -67,6 +67,7 @@ messagelistAdapter.getFilter().filter(s);
 
             }
         });
+
         listView = findViewById(R.id.item_list);
 
         database.getReference().child("Messages").addValueEventListener(new ValueEventListener() {
@@ -83,6 +84,7 @@ messagelistAdapter.getFilter().filter(s);
 
                 messagelistAdapter = new MessagelistAdapter(messages,MessageList.this);
                 listView.setAdapter(messagelistAdapter);
+
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

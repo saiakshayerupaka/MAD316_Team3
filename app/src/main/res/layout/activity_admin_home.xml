@@ -27,6 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="60dp"
                 android:text="Admin"
+                android:id="@+id/admin"
                 android:gravity="center"
                 android:textSize="20dp"></TextView>
         </LinearLayout>
@@ -57,25 +58,28 @@
             android:layout_height="wrap_content"
             android:text="No. of Users"/>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_margin="10dp"
         android:layout_weight="1"
         android:background="#EEE"
-        android:id="@+id/item"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
+
         <TextView
+            android:id="@+id/countItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
             android:text="23"
-            android:id="@+id/countItem"/>
+            android:textSize="25dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No. of Item"/>
+            android:text="No. of Item" />
     </LinearLayout>
 
 </LinearLayout>

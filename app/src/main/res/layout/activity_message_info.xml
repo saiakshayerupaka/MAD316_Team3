@@ -71,14 +71,21 @@
                     android:textColor="@color/colorAccent"
                     android:padding="2dp"></TextView>
             </LinearLayout>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Item Name"
+                android:id="@+id/createdOn"
+                android:textSize="12dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/light"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Message"
-                android:paddingTop="30dp"
+                android:layout_marginTop="20dp"
                 android:id="@+id/msg"
-                android:textColor="@color/colorAccent"
+                android:textSize="16dp"
                 android:padding="2dp"></TextView>
         </LinearLayout>
     </LinearLayout>

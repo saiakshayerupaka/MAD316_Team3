@@ -18,13 +18,28 @@
             android:gravity="center_vertical"
             android:paddingLeft="5dp"
             android:orientation="vertical">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="User name"
-                android:textStyle="bold"
-                android:textSize="17dp"
-                android:id="@+id/messageTitle"/>
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginRight="10dp"
+                    android:tint="@color/colorAccent"
+                    android:id="@+id/newMessage"
+                    android:src="@drawable/baseline_fiber_manual_record_black_36dp"></ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User name"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="17dp"
+                    android:id="@+id/messageTitle"/>
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"

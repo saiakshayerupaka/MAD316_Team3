@@ -16,15 +16,20 @@ import com.cegep.lanbow.models.Item;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class  ItemDescription extends AppCompatActivity {
 
     private TextView ItemName;
     private TextView ItemDes;
     private TextView ItemType;
+    private TextView ItemUpdatedOn;
     private Button Reserve;
     private ImageView Itemimg;
     private FirebaseStorage firebaseStorage;
     private ImageView backbtn;
+    private SimpleDateFormat df;
 
 
     @Override
@@ -36,10 +41,19 @@ public class  ItemDescription extends AppCompatActivity {
 
         firebaseStorage = FirebaseStorage.getInstance();
 
+        df = new SimpleDateFormat("MMM, d yyyy");
+
+
         ItemName = findViewById(R.id.itemName);
         ItemDes = findViewById(R.id.itemDes);
         Reserve = findViewById(R.id.reserve);
         ItemType = findViewById(R.id.item_type);
+
+        ItemUpdatedOn = findViewById(R.id.itemUpdatedOn);
+
+        if(item.getUpdatedOn()!=0){
+            ItemUpdatedOn.setText(df.format(new Date(item.getUpdatedOn())));
+        }
 
         ItemType.setText(item.getItemType());
 

@@ -67,6 +67,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Item Name"
+                android:id="@+id/itemUpdatedOn"
+                android:textSize="12dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/light"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Item descrption"
                 android:id="@+id/itemDes"
                 android:layout_marginTop="10dp"

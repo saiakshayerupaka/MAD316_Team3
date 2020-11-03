@@ -47,12 +47,13 @@ public class Message implements Serializable {
         this.messageBy = messageBy;
     }
 
-    public Message(String messageTitle, String messageType, String message, String messageStatus, String messageBy) {
+    public Message(String messageTitle, String messageType, String message, String messageStatus, String messageBy,long createdOn) {
         this.messageTitle = messageTitle;
         this.messageType = messageType;
         this.message = message;
         this.messageStatus = messageStatus;
         this.messageBy = messageBy;
+        this.createdOn = createdOn;
     }
 
     private String messageTitle;
@@ -60,6 +61,16 @@ public class Message implements Serializable {
     private String message;
     private String messageStatus;
     private String messageBy;
+
+    public long getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(long createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    private long createdOn;
 
     public String getMessageId() {
         return messageId;

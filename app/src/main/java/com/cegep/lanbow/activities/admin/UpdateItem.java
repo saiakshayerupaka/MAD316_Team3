@@ -34,6 +34,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -110,6 +111,7 @@ public class UpdateItem extends AppCompatActivity {
                 childUpdates.put("itemType", spinner.getSelectedItem());
                 childUpdates.put("itemDes", itemDescription.getText().toString());
                 childUpdates.put("itemUrl", imgurl);
+                childUpdates.put("updatedOn",new Date().getTime());
 
 
                 database.getReference().child("Items").child(item.getItemId()).updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {

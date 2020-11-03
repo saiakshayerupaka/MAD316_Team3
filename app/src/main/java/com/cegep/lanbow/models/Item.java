@@ -31,16 +31,27 @@ public class Item implements Serializable {
         this.itemDes = itemDes;
     }
 
-    public Item(String itemUrl, String itemName, String itemDes,String itemType) {
+    public Item(String itemUrl, String itemName, String itemDes,String itemType,long updatedOn) {
         this.itemUrl = itemUrl;
         this.itemName = itemName;
         this.itemDes = itemDes;
         this.itemType = itemType;
+        this.updatedOn = updatedOn;
     }
 
     private String itemUrl;
     private String itemName;
     private String itemDes;
+
+    public long getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(long updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
+    private long updatedOn;
 
     public String getItemType() {
         return itemType;

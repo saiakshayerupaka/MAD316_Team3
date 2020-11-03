@@ -14,7 +14,9 @@
         <activity android:name=".activities.student.Support" />
         <activity android:name=".activities.BorrowHistory" />
         <activity android:name=".activities.admin.UpdateItem" />
-        <activity android:name=".activities.student.EditProfile" />
+        <activity android:name=".activities.student.EditProfile" >
+
+        </activity>
         <activity android:name=".activities.student.ItemDescription" />
         <activity android:name=".activities.student.PasswordReset" />
         <activity android:name=".activities.student.Reservation" />
@@ -27,7 +29,9 @@
         <activity android:name=".activities.admin.AdminHome" />
         <activity android:name=".activities.student.UserHome" />
         <activity android:name=".activities.admin.AdminLogin" />
-        <activity android:name=".activities.student.StudentRegister" />
+        <activity android:name=".activities.student.StudentRegister">
+
+        </activity>
         <activity android:name=".activities.student.StudentLogin" />
         <activity android:name=".activities.GettingStarted">
             <intent-filter>

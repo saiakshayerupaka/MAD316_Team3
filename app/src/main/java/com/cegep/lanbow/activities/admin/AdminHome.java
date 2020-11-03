@@ -1,6 +1,7 @@
 package com.cegep.lanbow.activities.admin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,12 +11,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.load.resource.bitmap.BitmapEncoder;
 import com.cegep.lanbow.R;
 import com.cegep.lanbow.models.Admin;
+import com.cegep.lanbow.models.Item;
 import com.cegep.lanbow.models.Message;
+import com.cegep.lanbow.models.Student;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,6 +34,7 @@ public class AdminHome extends AppCompatActivity {
     private FirebaseDatabase database;
     private LinearLayout item,searchUser;
     private TextView countMessage,countNewMessage;
+    private TextView admin;
 
 
 
@@ -42,10 +49,14 @@ public class AdminHome extends AppCompatActivity {
         countUser = findViewById(R.id.countUser);
         countItem = findViewById(R.id.countItem);
 
+
+
+
         countMessage = findViewById(R.id.countMessage);
         countNewMessage = findViewById(R.id.countNewMessage);
 
         searchUser = findViewById(R.id.searchUser);
+
 
         searchUser.setOnClickListener(new View.OnClickListener() {
             @Override

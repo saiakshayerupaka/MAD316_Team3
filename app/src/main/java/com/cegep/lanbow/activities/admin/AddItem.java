@@ -32,6 +32,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.UUID;
 
 public class AddItem extends AppCompatActivity {
@@ -93,13 +94,15 @@ public class AddItem extends AppCompatActivity {
 
 
 
+
+
         AddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(imgurl!=null && !itemTitle.getText().toString().equals("") && !itemDescription.getText().toString().equals(""))
 
-                database.getReference().child("Items").child(UUID.randomUUID().toString()).setValue(new Item(imgurl,itemTitle.getText().toString(),itemDescription.getText().toString(),spinner.getSelectedItem().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                database.getReference().child("Items").child(UUID.randomUUID().toString()).setValue(new Item(imgurl,itemTitle.getText().toString(),itemDescription.getText().toString(),spinner.getSelectedItem().toString(),new Date().getTime())).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){

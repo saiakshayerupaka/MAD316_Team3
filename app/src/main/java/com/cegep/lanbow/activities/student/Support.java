@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class Support extends AppCompatActivity {
@@ -53,7 +54,7 @@ public class Support extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!messageTitle.getText().equals("") && !message.getText().equals("") && spinner.getSelectedItem()!=null){
-                    database.getReference().child("Messages").child(UUID.randomUUID().toString()).setValue(new Message(messageTitle.getText().toString(),spinner.getSelectedItem().toString(),message.getText().toString(),"unread",firebaseAuth.getCurrentUser().getUid())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    database.getReference().child("Messages").child(UUID.randomUUID().toString()).setValue(new Message(messageTitle.getText().toString(),spinner.getSelectedItem().toString(),message.getText().toString(),"unread",firebaseAuth.getCurrentUser().getUid(),new Date().getTime())).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){

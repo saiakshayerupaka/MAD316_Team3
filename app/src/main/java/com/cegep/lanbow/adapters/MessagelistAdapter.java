@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -66,6 +67,14 @@ public class MessagelistAdapter extends BaseAdapter implements Filterable {
         TextView MessageTitle = v.findViewById(R.id.messageTitle);
         TextView issueType = v.findViewById(R.id.issue_type);
         final TextView studentId = v.findViewById(R.id.studentId);
+        ImageView newMessage = v.findViewById(R.id.newMessage);
+
+        if(filteredmessages.get(position).getMessageStatus().equals("unread")){
+            newMessage.setVisibility(View.VISIBLE);
+        }
+        else{
+            newMessage.setVisibility(View.GONE);
+        }
 
         database.getReference().child("Users").child(filteredmessages.get(position).getMessageBy()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
