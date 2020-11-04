@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cegep.lanbow">
+    package="com.cegep.lenbow">
 
     <application
         android:allowBackup="true"
@@ -8,35 +8,34 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SplashScreenActivity">
+        <activity android:name="com.cegep.lenbow.activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.admin.MessageInfo" />
-        <activity android:name=".activities.admin.MessageList" />
-        <activity android:name=".activities.student.Support" />
-        <activity android:name=".activities.BorrowHistory" />
-        <activity android:name=".activities.admin.UpdateItem" />
-        <activity android:name=".activities.student.EditProfile"></activity>
-        <activity android:name=".activities.student.ItemDescription" />
-        <activity android:name=".activities.student.PasswordReset" />
-        <activity android:name=".activities.student.Reservation" />
-        <activity android:name=".activities.admin.Items" />
-        <activity android:name=".activities.admin.UserProfile" />
-        <activity android:name=".activities.admin.SearchUsers" />
-        <activity android:name=".activities.admin.AddItem" />
-        <activity android:name=".activities.student.UserProfile" />
-        <activity android:name=".activities.student.EmailVerify" />
-        <activity android:name=".activities.admin.AdminHome" />
-        <activity android:name=".activities.student.UserHome" />
-        <activity android:name=".activities.admin.AdminLogin" />
-        <activity android:name=".activities.student.StudentRegister"></activity>
-        <activity android:name=".activities.student.StudentLogin" />
-        <activity android:name=".activities.GettingStarted">
-
+        <activity android:name="com.cegep.lenbow.activities.admin.MessageInfo" />
+        <activity android:name="com.cegep.lenbow.activities.admin.MessageList" />
+        <activity android:name="com.cegep.lenbow.activities.student.Support" />
+        <activity android:name="com.cegep.lenbow.activities.BorrowHistory" />
+        <activity android:name="com.cegep.lenbow.activities.admin.UpdateItem" />
+        <activity android:name="com.cegep.lenbow.activities.student.EditProfile"></activity>
+        <activity android:name="com.cegep.lenbow.activities.student.ItemDescription" />
+        <activity android:name="com.cegep.lenbow.activities.student.PasswordReset" />
+        <activity android:name="com.cegep.lenbow.activities.student.Reservation" />
+        <activity android:name="com.cegep.lenbow.activities.admin.Items" />
+        <activity android:name="com.cegep.lenbow.activities.admin.UserProfile" />
+        <activity android:name="com.cegep.lenbow.activities.admin.SearchUsers" />
+        <activity android:name="com.cegep.lenbow.activities.admin.AddItem" />
+        <activity android:name="com.cegep.lenbow.activities.student.UserProfile" />
+        <activity android:name="com.cegep.lenbow.activities.student.EmailVerify" />
+        <activity android:name="com.cegep.lenbow.activities.admin.AdminHome" />
+        <activity android:name="com.cegep.lenbow.activities.student.UserHome" />
+        <activity android:name="com.cegep.lenbow.activities.admin.AdminLogin" />
+        <activity android:name="com.cegep.lenbow.activities.student.StudentRegister"></activity>
+        <activity android:name="com.cegep.lenbow.activities.student.StudentLogin" />
+        <activity android:name="com.cegep.lenbow.activities.GettingStarted">
         </activity>
     </application>
 

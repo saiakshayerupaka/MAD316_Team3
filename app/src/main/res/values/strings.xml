@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">lanbow</string>
+    <string name="app_name">lenbow</string>
 
     <string-array name="item_types">
         <item>Laptop</item>
