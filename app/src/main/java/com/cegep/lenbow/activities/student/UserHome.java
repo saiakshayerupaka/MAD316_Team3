@@ -16,11 +16,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.cegep.lenbow.R;
 import com.cegep.lenbow.activities.BorrowHistory;
 import com.cegep.lenbow.adapters.HomeItemListAdapter;
 import com.cegep.lenbow.models.Item;
+import com.cegep.lenbow.models.Student;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
