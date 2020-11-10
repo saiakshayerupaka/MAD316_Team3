@@ -8,9 +8,21 @@ import android.os.Handler;
 
 import com.cegep.lenbow.R;
 
+/**
+ * @author dipmal lakhani 1992854
+ */
+
+/**
+ * Splash Screen
+ */
 public class SplashScreenActivity extends AppCompatActivity {
 
     private static final long SPLASH_TIME_OUT = 2000;
+
+    /**
+     * activity on create method
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

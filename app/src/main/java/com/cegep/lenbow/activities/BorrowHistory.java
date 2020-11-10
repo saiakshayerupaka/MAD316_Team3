@@ -26,22 +26,60 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * borrow/reservation history page
+ * @author dipmal lakhani
+ */
+
 public class BorrowHistory extends AppCompatActivity {
 
+    /**
+     * listview attribute
+     */
     private ListView listView;
+    /**
+     * Edittext attribute
+     */
     private EditText Search;
+    /**
+     * Imageview attribute
+     */
     private ImageView backbtn;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * Firebase authentication object
+     */
     private FirebaseAuth auth;
+    /**
+     * List of Reserve type attribute
+     */
     private List<Reserve> reserveList = new ArrayList<>();
+    /**
+     * BorrowLostAapter object
+     */
     private BorrowListAdapter borrowadapter;
+    /**
+     * Id of the user
+     */
     private String userId;
+    /**
+     * object of Student class
+     */
     private Student s;
+    /**
+     * Linearlayout attribute
+     */
     private LinearLayout noresult;
     private boolean studentSide = true;
 
 
-
+    /**
+     * activity on create method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

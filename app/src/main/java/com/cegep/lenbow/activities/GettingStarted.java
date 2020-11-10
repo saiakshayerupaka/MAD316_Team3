@@ -14,12 +14,35 @@ import com.cegep.lenbow.activities.student.StudentLogin;
 import com.cegep.lenbow.activities.student.StudentRegister;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Getting started Screen
+ * @author dipmal lakhani
+ *
+ */
+
 public class GettingStarted extends AppCompatActivity {
 
+    /**
+     * Button view attribute
+     */
     private Button studentLogin;
+    /**
+     * Textview attribute
+     */
     private TextView studentRegister;
+    /**
+     * Button view attribute
+     */
     private Button adminLogin;
+    /**
+     * Firebase authentication object
+     */
     private FirebaseAuth auth;
+
+    /**
+     * activity on create method
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
