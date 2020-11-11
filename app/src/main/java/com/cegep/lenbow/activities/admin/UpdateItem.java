@@ -57,6 +57,10 @@ public class UpdateItem extends AppCompatActivity {
     private Button upload;
     private Button updateItem;
     private Spinner spinner;
+    /**
+     * used to select category of items
+     */
+
     private String imgurl;
 
     private FirebaseStorage storage;
@@ -137,6 +141,9 @@ public class UpdateItem extends AppCompatActivity {
             }
         });
     }
+    /**
+     * this method is used to uptate the item details i.e.,attributes
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -215,5 +222,8 @@ public class UpdateItem extends AppCompatActivity {
                         });
 
     }
+    /**
+     * this method is used to upload item image
+     */
 
 }
