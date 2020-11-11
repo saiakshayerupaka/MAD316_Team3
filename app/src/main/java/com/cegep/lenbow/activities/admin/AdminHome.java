@@ -29,8 +29,17 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AdminHome extends AppCompatActivity {
 
+    /**
+     * back button view
+     */
     private ImageView backbtn;
+    /**
+     * User count text view , Item count textview
+     */
     private TextView countUser,countItem;
+    /**
+     * Firebase database obect
+     */
     private FirebaseDatabase database;
     private LinearLayout item,searchUser;
     private TextView countMessage,countNewMessage;
