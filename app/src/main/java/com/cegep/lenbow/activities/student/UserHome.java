@@ -36,7 +36,7 @@ import java.util.List;
 
 /**
  * Home Screen activity
- * @author dipmal lakhani
+ * @author harshavardhan
  */
 
 public class UserHome extends AppCompatActivity {

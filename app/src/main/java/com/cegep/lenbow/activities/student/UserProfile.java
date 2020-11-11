@@ -26,7 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 
 /**
  * User profile activity
- * @author dipmal lakhani
+ * @author harshavardhan
  */
 
 public class UserProfile extends AppCompatActivity {
