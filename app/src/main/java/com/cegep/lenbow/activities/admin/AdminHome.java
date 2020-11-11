@@ -38,7 +38,7 @@ public class AdminHome extends AppCompatActivity {
      */
     private TextView countUser,countItem;
     /**
-     * Firebase database obect
+     * Firebase database object
      */
     private FirebaseDatabase database;
     private LinearLayout item,searchUser;
@@ -46,7 +46,10 @@ public class AdminHome extends AppCompatActivity {
     private TextView admin;
 
 
-
+    /**
+     * method called after Acticity created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +114,10 @@ public class AdminHome extends AppCompatActivity {
                 countItem.setText(String.valueOf(i));
             }
 
+            /**
+             * method called when the activity is cancelled
+             * @param error
+             */
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -124,6 +131,10 @@ public class AdminHome extends AppCompatActivity {
                 countNewMessage.setText(String.valueOf(i) + " new");
             }
 
+            /**
+             * method called when the activity is cancelled
+             * @param error
+             */
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

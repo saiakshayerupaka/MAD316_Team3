@@ -37,18 +37,50 @@ import java.util.List;
  * @author Amandeep singh
  */
 
+/**
+ *
+ * Items Class deals with Items Operations
+ */
 
 public class Items extends AppCompatActivity {
-
+    /**
+     * ListView attribute itemlist
+     */
     private ListView itemlist;
+    /**
+     * FirebaseDatabase attribute database
+     */
     private FirebaseDatabase database;
+    /**
+     * items arrayList used to store items
+     */
     private List<Item> items = new ArrayList<>();
+    /**
+     *
+     * itemListAdapter attribute itemlistAdapter
+     */
     private ItemlistAdapter itemlistAdapter;
+    /**
+     * additem View
+     */
     private TextView additem;
+    /**
+     *  back View
+     */
     private ImageView back;
+    /**
+     * search EditText used to take the Search content
+     */
     private EditText search;
+    /**
+     * Linear Layout attribute noresult is a Layout to display when there are no search results
+     */
     private LinearLayout noresult;
 
+    /**
+     * Calle when the activity is created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +112,9 @@ public class Items extends AppCompatActivity {
 
         search.addTextChangedListener(new TextWatcher() {
             @Override
+            /**
+             * checks whethere there search  results or not
+             */
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 if(itemlistAdapter.getCount()==0){
                     noresult.setVisibility(View.VISIBLE);
@@ -90,6 +125,13 @@ public class Items extends AppCompatActivity {
 
             }
 
+            /**
+             * Display search results
+             * @param s
+             * @param start
+             * @param before
+             * @param count
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 itemlistAdapter.getFilter().filter(s);
@@ -135,6 +177,10 @@ itemlistAdapter.getFilter().filter(s);
 
             }
 
+            /**
+             * called when activity is cancelled
+             * @param error
+             */
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

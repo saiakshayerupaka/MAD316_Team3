@@ -30,16 +30,34 @@ import com.google.firebase.database.ValueEventListener;
  * @author Amandeep singh
  */
 
-
+/**
+ * AdminLogin class used for dealing with Admin Login
+ */
 public class AdminLogin extends AppCompatActivity {
-
+    /**
+     * BackButton View
+     * to go to previous activity
+     */
     private ImageView backbtn;
+    /**
+     * FirebaseAuth attribute mAuth
+     * Used for FireBase authentication purpose
+     */
     private FirebaseAuth mAuth;
+    /**
+     * FirebaseDatabase attribute database
+     */
     private FirebaseDatabase database;
+    /**
+     * emailInput,passInput EditText attributes for taking email input and passwordInput
+     */
     private EditText emailInput, passInput;
     private Button adminLogin;
 
-
+    /**
+     * called when Activity is created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +94,11 @@ public class AdminLogin extends AppCompatActivity {
                         }
                     }
 
+                    /**
+                     *
+                     * called on Activity Cancellation
+                     * @param error
+                     */
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(AdminLogin.this, error.getMessage(), Toast.LENGTH_LONG).show();
