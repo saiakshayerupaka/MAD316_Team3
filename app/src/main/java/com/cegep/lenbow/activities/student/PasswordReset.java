@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Password reset activity
- * @author dipmal lakhani
+ * @author sanjeev yerramsetty
  */
 
 public class PasswordReset extends AppCompatActivity {

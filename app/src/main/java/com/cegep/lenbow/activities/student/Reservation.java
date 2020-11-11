@@ -40,7 +40,7 @@ import com.cegep.lenbow.models.*;
 
 /**
  * Item Reservation activity
- * @author dipmal lakhani
+ * @author sanjeev yerramsetty
  */
 
 public class Reservation extends AppCompatActivity {
