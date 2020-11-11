@@ -24,19 +24,36 @@ import java.util.List;
 
 /**
  * item list adapter for home screen
- * @author dipmal lakhani
+ * @author dipmal lakhani @author prashant reddy nannuru
  */
 
 
 public class HomeItemListAdapter extends BaseAdapter implements Filterable {
+    /**
+     * list originalitems attribute
+     */
     private List<Item> originalitems;
+    /**
+     * list filtereditems attribute
+     */
     private List<Item> filtereditems;
+    /**
+     * mcontext object
+     */
     private Context mContext;
+    /**
+     * Firebase storage object
+     */
     private FirebaseStorage firebaseStorage;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase firebaseDatabase;
 
     private HashMap<Integer,View> views = new HashMap<Integer, View>();
-
+    /**
+     * ItemFilter object
+     */
     private ItemFilter mFilter = new ItemFilter();
 
     public HomeItemListAdapter(Context context,List<Item> items ) {
@@ -47,17 +64,23 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseDatabase= FirebaseDatabase.getInstance();
     }
-
+    /**
+     * This method returns the count of the items
+     */
     @Override
     public int getCount() {
         return filtereditems.size();
     }
-
+    /**
+     * This method returns the items
+     */
     @Override
     public Item getItem(int position) {
         return filtereditems.get(position);
     }
-
+    /**
+     * This method returns the itemId
+     */
     @Override
     public long getItemId(int position) {
         return position;
@@ -69,7 +92,9 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
         TextView item_type;
         ImageView itemImg;
     }
-
+    /**
+     * This method allows the adapter to view the items
+     */
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
@@ -115,6 +140,9 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
     }
 
     private class ItemFilter extends Filter {
+        /**
+         * This method performs filtering
+         */
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
 
@@ -143,6 +171,9 @@ public class HomeItemListAdapter extends BaseAdapter implements Filterable {
         }
 
         @SuppressWarnings("unchecked")
+        /**
+         * This method displays results
+         */
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             filtereditems = (ArrayList<Item>) results.values;

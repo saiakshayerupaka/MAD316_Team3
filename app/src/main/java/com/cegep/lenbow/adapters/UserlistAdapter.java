@@ -17,17 +17,27 @@ import java.util.List;
 
 /**
  * user list adapter
- * @author dipmal lakhani
+ * @author dipmal lakhani @author prashant reddy nannuru
  */
 
 
 public class UserlistAdapter extends BaseAdapter implements Filterable {
 
+   /**
+     * list originalstudents attribute
+     */
     private List<Student> originalstudents;
+    /**
+     * list filteredstudents attribute
+     */
     private List<Student> filteredstudents;
+    /**
+     * mContext object
+     */
     private Context mContext;
-
-
+    /**
+     *  object of ItemFilter
+     */
 
     private ItemFilter mFilter = new ItemFilter();
 
@@ -37,12 +47,17 @@ public class UserlistAdapter extends BaseAdapter implements Filterable {
         mContext = context;
     }
 
-
+    /**
+     * This method returns the count of students
+     */
     @Override
     public int getCount() {
         return filteredstudents.size();
     }
 
+    /**
+     * This method gets the filteredstudents
+     */
     @Override
     public Object getItem(int position) {
         return filteredstudents.get(position);
@@ -72,13 +87,18 @@ public class UserlistAdapter extends BaseAdapter implements Filterable {
 
         return v;
     }
-
+    /**
+     * This method filters from the list
+     */
     @Override
     public Filter getFilter() {
         return mFilter;
     }
 
     private class ItemFilter extends Filter {
+        /**
+         * This method performs filtering based on the characters typed
+         */
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
 
@@ -107,6 +127,9 @@ public class UserlistAdapter extends BaseAdapter implements Filterable {
         }
 
         @SuppressWarnings("unchecked")
+        /**
+         * This method shows the filteredresults and notifies about the changes made
+         */
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             filteredstudents = (ArrayList<Student>) results.values;
