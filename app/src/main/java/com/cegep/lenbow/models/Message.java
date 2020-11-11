@@ -4,6 +4,12 @@ import java.io.Serializable;
 /**
  * Message model class
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 
@@ -61,10 +67,25 @@ public class Message implements Serializable {
         this.createdOn = createdOn;
     }
 
+    /**
+     * Message Title
+     */
     private String messageTitle;
+    /**
+     * Message Type
+     */
     private String messageType;
+    /**
+     * Message body
+     */
     private String message;
+    /**
+     * Message Status
+     */
     private String messageStatus;
+    /**
+     * Message by userId
+     */
     private String messageBy;
 
     public long getCreatedOn() {
@@ -95,6 +116,9 @@ public class Message implements Serializable {
         this.studentId = studentId;
     }
 
+    /**
+     * Student Id
+     */
     private String studentId;
 
 }

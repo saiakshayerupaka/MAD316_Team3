@@ -9,7 +9,13 @@ import android.os.Handler;
 import com.cegep.lenbow.R;
 
 /**
- * @author dipmal lakhani 1992854
+ * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 /**

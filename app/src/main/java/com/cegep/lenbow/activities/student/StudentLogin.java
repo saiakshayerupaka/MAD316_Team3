@@ -24,7 +24,13 @@ import com.google.firebase.database.ValueEventListener;
 
 /**
  * Student Login activity
- * @author sanjeev yerramsetty
+ * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 public class StudentLogin extends AppCompatActivity {

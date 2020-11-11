@@ -40,6 +40,12 @@ import java.util.UUID;
 /**
  * User profile Edit
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 public class EditProfile extends AppCompatActivity implements Validator.ValidationListener {

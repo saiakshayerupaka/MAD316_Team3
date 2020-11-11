@@ -19,6 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 /**
  * Admin home screen activity
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 public class AdminHome extends AppCompatActivity {

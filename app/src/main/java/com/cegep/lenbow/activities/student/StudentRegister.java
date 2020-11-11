@@ -32,7 +32,13 @@ import com.mobsandgeeks.saripaar.annotation.Pattern;
 import java.util.List;
 /**
  * Student registration activity
- * @author Harshavardhan
+ * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 

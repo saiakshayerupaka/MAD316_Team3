@@ -4,6 +4,12 @@ import java.io.Serializable;
 /**
  * Student model class
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 public class Student implements Serializable {

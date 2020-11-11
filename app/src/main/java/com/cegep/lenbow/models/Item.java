@@ -5,6 +5,12 @@ import java.io.Serializable;
 /**
  * Item model class
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 public class Item implements Serializable {
@@ -44,8 +50,18 @@ public class Item implements Serializable {
         this.updatedOn = updatedOn;
     }
 
+    /**
+     * Image url of the item
+     */
     private String itemUrl;
+
+    /**
+     * Item name
+     */
     private String itemName;
+    /**
+     * Item Description
+     */
     private String itemDes;
 
     public long getUpdatedOn() {
@@ -56,6 +72,9 @@ public class Item implements Serializable {
         this.updatedOn = updatedOn;
     }
 
+    /**
+     * Item update on
+     */
     private long updatedOn;
 
     public String getItemType() {
@@ -66,6 +85,9 @@ public class Item implements Serializable {
         this.itemType = itemType;
     }
 
+    /**
+     * Item Type
+     */
     private String itemType;
 
     public String getItemId() {
@@ -76,5 +98,8 @@ public class Item implements Serializable {
         this.itemId = itemId;
     }
 
+    /**
+     * Item Id
+     */
     private String itemId;
 }

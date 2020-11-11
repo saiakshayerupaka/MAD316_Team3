@@ -6,6 +6,12 @@ import java.util.List;
 /**
  * Reseve Model class
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 
@@ -73,7 +79,13 @@ public class Reserve implements Serializable {
         this.returnDate = returnDate;
     }
 
+    /**
+     * User Id
+     */
     private String userId;
+    /**
+     * Item Id
+     */
     private String itemId;
 
     public String getItemName() {
@@ -84,10 +96,25 @@ public class Reserve implements Serializable {
         this.itemName = itemName;
     }
 
+    /**
+     * Item Name
+     */
     private String itemName;
+    /**
+     * Selected Dates for reservation
+     */
     private List<Long> selectedDates;
+    /**
+     * Reservation added on
+     */
     private Long addon;
+    /**
+     * Item borrow date
+     */
     private Long borrowDate;
+    /**
+     * Item return date
+     */
     private Long returnDate;
 
     public String getReserveId() {
@@ -98,5 +125,8 @@ public class Reserve implements Serializable {
         this.reserveId = reserveId;
     }
 
+    /**
+     * Reservation Id
+     */
     private String reserveId;
 }

@@ -29,6 +29,12 @@ import com.google.firebase.storage.FirebaseStorage;
 /**
  * user profile for admin
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 

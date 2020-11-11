@@ -2,6 +2,12 @@ package com.cegep.lenbow.models;
 /**
  * Admin model class
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 

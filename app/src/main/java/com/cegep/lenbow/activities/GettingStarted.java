@@ -17,6 +17,12 @@ import com.google.firebase.auth.FirebaseAuth;
 /**
  * Getting started Screen
  * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  *
  */
 

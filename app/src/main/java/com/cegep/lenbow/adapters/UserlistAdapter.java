@@ -17,7 +17,13 @@ import java.util.List;
 
 /**
  * user list adapter
- * @author dipmal lakhani @author prashant reddy nannuru
+ * @author dipmal lakhani
+ * @author Sai Akshay
+ * @author Gopichand
+ * @author HarshaVardhan
+ * @author Vinay
+ * @author prashant
+ * @author Amandeep singh
  */
 
 
