@@ -30,17 +30,45 @@ import com.google.firebase.storage.FirebaseStorage;
  */
 
 public class UserProfile extends AppCompatActivity {
+    /**
+     * Textview name,email,studentid,phone,address inputattribute
+     */
 
     private TextView name,email,studentid,phone,address;
+    /**
+     * firebase database authentication
+     */
     private FirebaseAuth auth;
+    /**
+     * firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * buuton view attribute
+     */
     private Button resetpassword;
+    /**
+     * button view attribute
+     */
     private Button editProfile;
+    /**
+     * imageview backbtn attribute
+     */
     private ImageView backbtn;
     private Student student;
+    /**
+     * imageview profilepic
+     */
     private ImageView profilepic;
+    /**
+     * firebase databse storage
+     */
     private FirebaseStorage storage;
 
+    /**
+     * activity oncreate activity userprofile
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +152,9 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
-
+/**
+ * clicklistner for editprofile
+ */
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

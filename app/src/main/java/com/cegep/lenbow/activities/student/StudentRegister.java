@@ -32,37 +32,73 @@ import com.mobsandgeeks.saripaar.annotation.Pattern;
 import java.util.List;
 /**
  * Student registration activity
- * @author dipmal lakhani
+ * @author Harshavardhan
  */
 
 
 public class StudentRegister extends AppCompatActivity implements Validator.ValidationListener {
-
+    /**
+     * firebase database authentication
+     */
     private FirebaseAuth mAuth;
+    /**
+     * firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * Imageview backbtn attribute
+     */
     private ImageView backbtn;
+    /**
+     * linearlayout
+     */
     private LinearLayout Step1,Step2;
+    /**
+     *next,signup, button attribute
+     */
     private Button next,signup;
     @NotEmpty
+    /**
+     * edittext nameinput attribute
+     */
     private EditText nameInput;
     @NotEmpty
     @Email
+    /**
+     * edittext eamilinput input attribute
+     */
     private EditText emailInput;
     @Password(min = 6, scheme = Password.Scheme.ALPHA_NUMERIC_MIXED_CASE_SYMBOLS)
+    /**
+     * edittext passinput attribute
+     */
     private EditText passInput;
 
     @NotEmpty(message = "Student id shouldn't be empty")
     @Length(min = 7,max = 7,message = "Student Id should be 7 digit")
+    /**
+     * edittext idinput attribute
+     */
     private EditText idInput;
 
     @NotEmpty(message = "Phone number shouldn't be empty")
     @Pattern(regex = "^[0-9-]+$",message = "Enter valid phone number")
     private EditText phoneInput;
     @NotEmpty
+    /**
+     * edittext addressinput attribute
+     */
     private EditText addressInput;
+    /**
+     * validator
+     */
 
     private Validator validator;
 
+    /**
+     * oncreate for student registeration
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

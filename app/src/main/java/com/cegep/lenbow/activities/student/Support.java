@@ -24,18 +24,38 @@ import java.util.UUID;
 
 /**
  * Student support activity
- * @author dipmal lakhani
+ * @author HarshaVardhan
  */
 
 
 public class Support extends AppCompatActivity {
+    /**
+     * edit text for message input attribute
+     */
 
     private EditText messageTitle,message;
     private Spinner spinner;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * Firebase authentication object
+     */
     private FirebaseAuth firebaseAuth;
+    /**
+     * send Button view attribute
+     */
     private Button send;
+    /**
+     * backbtn Button view attribute
+     */
     private ImageView backbtn;
+
+    /**
+     * activity on saved instances
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +88,9 @@ public class Support extends AppCompatActivity {
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
+            /**
+             * activity on clickview
+             */
             public void onClick(View v) {
                 if(!messageTitle.getText().equals("") && !message.getText().equals("") && spinner.getSelectedItem()!=null){
                     database.getReference().child("Messages").child(UUID.randomUUID().toString()).setValue(new Message(messageTitle.getText().toString(),spinner.getSelectedItem().toString(),message.getText().toString(),"unread",firebaseAuth.getCurrentUser().getUid(),new Date().getTime())).addOnCompleteListener(new OnCompleteListener<Void>() {

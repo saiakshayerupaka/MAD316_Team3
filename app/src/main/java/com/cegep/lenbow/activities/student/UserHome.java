@@ -40,15 +40,47 @@ import java.util.List;
  */
 
 public class UserHome extends AppCompatActivity {
+    /**
+     * Imageview for Profilefile
+     */
     private ImageView profile;
+    /**
+     * firebase authentication obj
+     */
     private FirebaseAuth mAuth;
+    /**
+     * firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * Listview object
+     */
     private ListView listview;
+    /**
+     * Edittext search input attribute
+     */
     private EditText search;
+    /**
+     * Homelist adapter
+     */
     private HomeItemListAdapter homeItemListAdapter;
+    /**
+     * List ietemlist arraylist
+     */
     private List<Item> itemlist = new ArrayList<>();
+    /**
+     * Imageview menu attribute
+     */
     private ImageView menu;
+    /**
+     * Linearlayout noresult
+     */
     private LinearLayout noresult;
+
+    /**
+     * activity oncreate savedinstancestate
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +113,7 @@ public class UserHome extends AppCompatActivity {
 
 
             }
+
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -144,6 +177,7 @@ public class UserHome extends AppCompatActivity {
 
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

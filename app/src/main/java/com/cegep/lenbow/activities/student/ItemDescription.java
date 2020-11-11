@@ -20,44 +20,30 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * Item description activity
- * @author sanjeev yerramsetty
+ * @author dipmal lakhani
  */
 
 public class  ItemDescription extends AppCompatActivity {
-
     /**
-     * ItemDescription ItemName TextView attribute
+     * Item name Input attribute
      */
+
     private TextView ItemName;
     /**
-     * It contains description of the product displayed
+     *Item Description
      */
     private TextView ItemDes;
     private TextView ItemType;
-    /**
-     * It contains Item updated date of the product displayed
-     */
     private TextView ItemUpdatedOn;
-    /**
-     * ItemDescription Reserve button attribute
-     */
     private Button Reserve;
-    /**
-     * ItemDescription Itemimg ImageView attribute
-     */
     private ImageView Itemimg;
     private FirebaseStorage firebaseStorage;
-    /**
-     * ItemDescription backbutton button attribute
-     */
     private ImageView backbtn;
-    /**
-     * Used to format the date in required format
-     */
     private SimpleDateFormat df;
 
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_description);
