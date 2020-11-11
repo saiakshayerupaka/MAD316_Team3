@@ -22,6 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Student support activity
+ * @author dipmal lakhani
+ */
+
+
 public class Support extends AppCompatActivity {
 
     private EditText messageTitle,message;

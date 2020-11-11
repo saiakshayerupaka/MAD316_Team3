@@ -1,6 +1,10 @@
 package com.cegep.lenbow.models;
 
 import java.io.Serializable;
+/**
+ * Student model class
+ * @author dipmal lakhani
+ */
 
 public class Student implements Serializable {
     public Student() {
@@ -55,10 +59,25 @@ public class Student implements Serializable {
         this.address = address;
     }
 
+    /**
+     * name of the student
+     */
     public String name;
+    /**
+     * email of the student
+     */
     public String email;
+    /**
+     * unique student id
+     */
     public String studentId;
+    /**
+     * phone number of the student
+     */
     public String phonenumber;
+    /**
+     * address of the student
+     */
     public String address;
 
     public String getProfilepic() {
@@ -78,6 +97,10 @@ public class Student implements Serializable {
     public void setProfileStatus(String profileStatus) {
         this.profileStatus = profileStatus;
     }
+
+    /**
+     * user profile status : active| block
+     */
 
     public String profileStatus;
 

@@ -1,4 +1,9 @@
 package com.cegep.lenbow.models;
+/**
+ * Admin model class
+ * @author dipmal lakhani
+ */
+
 
 public class Admin {
     public Admin() {

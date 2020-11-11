@@ -34,6 +34,12 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Add Item activity for Admin
+ * @author dipmal lakhani
+ */
+
+
 public class AddItem extends AppCompatActivity {
 
     private Uri filePath;

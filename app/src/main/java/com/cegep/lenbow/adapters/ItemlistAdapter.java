@@ -27,6 +27,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Item list adapter
+ * @author dipmal lakhani
+ */
+
+
 public class ItemlistAdapter extends BaseAdapter implements Filterable {
 
     private List<Item> originalitems;

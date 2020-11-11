@@ -27,6 +27,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity for List of Users
+ * @author dipmal lakhani
+ */
+
+
 public class SearchUsers extends AppCompatActivity {
 
     private ListView listView;

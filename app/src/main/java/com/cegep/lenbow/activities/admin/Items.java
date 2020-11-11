@@ -26,6 +26,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Item list activity
+ * @author dipmal lakhani
+ */
+
+
 public class Items extends AppCompatActivity {
 
     private ListView itemlist;

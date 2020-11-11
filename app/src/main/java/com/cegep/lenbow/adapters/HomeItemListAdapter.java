@@ -22,6 +22,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * item list adapter for home screen
+ * @author dipmal lakhani
+ */
+
+
 public class HomeItemListAdapter extends BaseAdapter implements Filterable {
     private List<Item> originalitems;
     private List<Item> filtereditems;

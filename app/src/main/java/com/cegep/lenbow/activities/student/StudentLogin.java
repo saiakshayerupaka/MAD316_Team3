@@ -22,6 +22,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Student Login activity
+ * @author dipmal lakhani
+ */
+
 public class StudentLogin extends AppCompatActivity {
 
     private ImageView backbtn;

@@ -37,6 +37,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Activity for update item
+ * @author dipmal lakhani
+ */
+
+
 public class UpdateItem extends AppCompatActivity {
 
     private ImageView itemImg;

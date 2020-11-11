@@ -3,6 +3,12 @@ package com.cegep.lenbow.models;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Reseve Model class
+ * @author dipmal lakhani
+ */
+
+
 public class Reserve implements Serializable {
 
 

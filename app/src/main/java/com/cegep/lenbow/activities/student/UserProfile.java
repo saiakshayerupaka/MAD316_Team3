@@ -24,6 +24,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
+/**
+ * User profile activity
+ * @author dipmal lakhani
+ */
+
 public class UserProfile extends AppCompatActivity {
 
     private TextView name,email,studentid,phone,address;

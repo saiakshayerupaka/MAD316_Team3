@@ -30,6 +30,11 @@ import com.mobsandgeeks.saripaar.annotation.Password;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 
 import java.util.List;
+/**
+ * Student registration activity
+ * @author dipmal lakhani
+ */
+
 
 public class StudentRegister extends AppCompatActivity implements Validator.ValidationListener {
 

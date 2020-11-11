@@ -38,6 +38,11 @@ import java.util.UUID;
 
 import com.cegep.lenbow.models.*;
 
+/**
+ * Item Reservation activity
+ * @author dipmal lakhani
+ */
+
 public class Reservation extends AppCompatActivity {
 
     private CalendarPickerView calendar;

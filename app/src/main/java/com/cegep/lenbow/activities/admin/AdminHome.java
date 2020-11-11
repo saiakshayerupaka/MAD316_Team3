@@ -16,6 +16,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Admin home screen activity
+ * @author dipmal lakhani
+ */
+
 public class AdminHome extends AppCompatActivity {
 
     private ImageView backbtn;

@@ -1,6 +1,11 @@
 package com.cegep.lenbow.models;
 
 import java.io.Serializable;
+/**
+ * Message model class
+ * @author dipmal lakhani
+ */
+
 
 public class Message implements Serializable {
 

@@ -34,6 +34,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Home Screen activity
+ * @author dipmal lakhani
+ */
+
 public class UserHome extends AppCompatActivity {
     private ImageView profile;
     private FirebaseAuth mAuth;

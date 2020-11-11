@@ -15,6 +15,12 @@ import com.cegep.lenbow.models.Student;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * user list adapter
+ * @author dipmal lakhani
+ */
+
+
 public class UserlistAdapter extends BaseAdapter implements Filterable {
 
     private List<Student> originalstudents;

@@ -24,6 +24,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Inbox Activity
+ * @author dipmal lakhani
+ */
+
+
 public class MessageList extends AppCompatActivity {
 
     private ListView listView;

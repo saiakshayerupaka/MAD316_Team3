@@ -22,6 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Message list adapter
+ * @author dipmal lakhani
+ */
+
 
 public class MessagelistAdapter extends BaseAdapter implements Filterable {
 

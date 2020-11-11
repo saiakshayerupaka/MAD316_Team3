@@ -18,6 +18,10 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+/**
+ * Item description activity
+ * @author dipmal lakhani
+ */
 
 public class  ItemDescription extends AppCompatActivity {
 

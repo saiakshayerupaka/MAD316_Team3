@@ -20,6 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Message info activity
+ * @author dipmal lakhani
+ */
+
+
 public class MessageInfo extends AppCompatActivity {
 
     private TextView messageTitle,studentId,issueType,message,createdOn;

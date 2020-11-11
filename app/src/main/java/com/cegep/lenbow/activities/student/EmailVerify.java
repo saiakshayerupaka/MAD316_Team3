@@ -10,6 +10,11 @@ import android.widget.Toast;
 import com.cegep.lenbow.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Email Verify activity
+ * @author dipmal lakhani
+ */
+
 public class EmailVerify extends AppCompatActivity {
 
     public Button resend;

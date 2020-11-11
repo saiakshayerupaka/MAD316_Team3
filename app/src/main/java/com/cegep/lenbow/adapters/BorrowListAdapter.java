@@ -32,6 +32,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Borrowed item list adapter
+ * @author dipmal lakhani
+ */
+
+
 public class BorrowListAdapter extends BaseAdapter implements Filterable {
 
     private List<Reserve> originalreserve;

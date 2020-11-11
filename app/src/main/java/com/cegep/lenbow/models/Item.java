@@ -2,6 +2,11 @@ package com.cegep.lenbow.models;
 
 import java.io.Serializable;
 
+/**
+ * Item model class
+ * @author dipmal lakhani
+ */
+
 public class Item implements Serializable {
 
     public Item() {

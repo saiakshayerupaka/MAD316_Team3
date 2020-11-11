@@ -37,31 +37,95 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * User profile Edit
+ * @author dipmal lakhani
+ */
+
 public class EditProfile extends AppCompatActivity implements Validator.ValidationListener {
 
+    /**
+     * Imageview back button attribute
+     */
     private ImageView backbtn;
+
+    /**
+     *
+     * Edittext email input attribute
+     */
     @Email
     @NotEmpty
     private EditText email;
     @NotEmpty
+
+    /**
+     * EditText name input attribute
+     */
     private EditText name;
     @Pattern(regex = "^[0-9-]+$", message = "Enter valid phone number")
+
+    /**
+     * EditText phone input attribute
+     */
     private EditText phone;
     @NotEmpty
+
+    /**
+     * EditText address input attribute
+     */
     private EditText address;
+
+    /**
+     * save button attribute
+     */
     private Button save;
+    /**
+     * Validator object
+     */
     private Validator validator;
+
+    /**
+     * Uri obect
+     */
     private Uri uploadFilePath;
+
+    /**
+     * profile url string attribute
+     */
     private String profileurl;
+
+    /**
+     * Firebase storage object
+     */
 
     private FirebaseStorage storage;
 
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+
+    /**
+     * Firebase authentication object
+     */
     private FirebaseAuth auth;
+
+    /**
+     * student class object
+     */
     private Student s;
+
+    /**
+     * Button view attribute
+     */
 
     private Button uploadpic;
 
+
+    /**
+     * activity on create method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +179,10 @@ public class EditProfile extends AppCompatActivity implements Validator.Validati
 
     }
 
+    /**
+     * This method called upon validation success
+     */
+
     @Override
     public void onValidationSucceeded() {
         Toast.makeText(EditProfile.this, "Validation success", Toast.LENGTH_LONG).show();
@@ -141,6 +209,11 @@ if(!email.getText().equals(s.getEmail())){
 
     }
 
+    /**
+     * This method called when validation failed
+     * @param errors
+     */
+
     @Override
     public void onValidationFailed(List<ValidationError> errors) {
         for (ValidationError error : errors) {
@@ -155,6 +228,10 @@ if(!email.getText().equals(s.getEmail())){
             }
         }
     }
+
+    /**
+     * This method open intent for uploading image
+     */
 
     private void upload(){
         Intent intent = new Intent();
@@ -179,6 +256,11 @@ if(!email.getText().equals(s.getEmail())){
 
         }
     }
+
+    /**
+     * This method upload image to Firebase storage
+     * @param uploadFilePath
+     */
 
     private void uploadImage(Uri uploadFilePath) {
 
