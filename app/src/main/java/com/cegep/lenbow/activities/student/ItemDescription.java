@@ -39,17 +39,40 @@ public class  ItemDescription extends AppCompatActivity {
      *Item Description
      */
     private TextView ItemDes;
+    /**
+     * Item type Textview
+     */
     private TextView ItemType;
+    /**
+     * Item updated on date textview
+     */
     private TextView ItemUpdatedOn;
+    /**
+     * Reserve button view
+     */
     private Button Reserve;
+    /**
+     * Item Image imageview
+     */
     private ImageView Itemimg;
+    /**
+     * Firebase storage object
+     */
     private FirebaseStorage firebaseStorage;
+    /**
+     * back button view
+     */
     private ImageView backbtn;
+    /**
+     * Simple date formate object
+     */
     private SimpleDateFormat df;
 
-
+    /**
+     * activity on create method
+     * @param savedInstanceState
+     */
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_description);

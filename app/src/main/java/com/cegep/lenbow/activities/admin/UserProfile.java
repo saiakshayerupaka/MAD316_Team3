@@ -40,18 +40,51 @@ import com.google.firebase.storage.FirebaseStorage;
 
 public class UserProfile extends AppCompatActivity {
 
+    /**
+     * User name, Email, student Id, phone number, Address textview
+     */
     private TextView name,email,studentid,phone,address;
+    /**
+     * block button view
+     */
     private Button block;
+    /**
+     * MenuItem attribute
+     */
     private MenuItem blck;
+    /**
+     * backbtn image view
+     */
     private ImageView back;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * more imageview
+     */
     private ImageView more;
+    /**'
+     * Student class object
+     */
     private Student s;
+    /**
+     * borrowhistory button view
+     */
     private Button borrowhistory;
+    /**'
+     * profile pic imageview
+     */
     private ImageView profilepic;
+    /**
+     * Firebase stirage object
+     */
     private FirebaseStorage storage;
 
-
+    /**
+     * activity on create method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +157,10 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
+    /**
+     * This method will show the popup menu on top
+     * @param v
+     */
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
@@ -164,6 +201,10 @@ public class UserProfile extends AppCompatActivity {
         });
         popup.show();
     }
+
+    /**
+     * this method will block/unblock the user
+     */
 
     public void Block(){
         database.getReference().child("Users").child(s.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {

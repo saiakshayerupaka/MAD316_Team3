@@ -47,18 +47,50 @@ import java.util.UUID;
 
 
 public class AddItem extends AppCompatActivity {
-
+    /**
+     * filepath URI object
+     */
     private Uri filePath;
+    /**
+     * Firebase storage object
+     */
     private FirebaseStorage storage;
+    /**
+     * Firebase storage reference object
+     */
     private StorageReference storageReference;
+    /**
+     * upload button view
+     */
     private Button upload;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * Item Image imageview
+     */
     private ImageView itemImg;
 
+    /**
+     * Item url
+     */
     private String imgurl;
+    /**
+     * Item Title,Item Description
+     */
     private EditText itemTitle,itemDescription;
+    /**
+     * Add Item button view
+     */
     private Button AddItem;
+    /**
+     * Spinner view
+     */
     private Spinner spinner;
+    /**
+     * Item type
+     */
     private String itemType;
 
 
@@ -82,6 +114,10 @@ public class AddItem extends AppCompatActivity {
         }
     }
 
+    /**
+     * activity on create method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,6 +182,10 @@ public class AddItem extends AppCompatActivity {
 
     }
 
+    /**
+     * This method will start new Intent to select Image
+     */
+
     private void upload(){
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -158,6 +198,10 @@ public class AddItem extends AppCompatActivity {
     }
 
 
+    /**
+     * This method will upload the image to firebase storage
+     * @param filePath
+     */
 
     private void uploadImage(Uri filePath) {
 
