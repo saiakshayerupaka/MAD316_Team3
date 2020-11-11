@@ -41,15 +41,40 @@ import java.util.List;
 
 public class SearchUsers extends AppCompatActivity {
 
+    /**
+     * List view to showcase list of users
+     */
     private ListView listView;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * List of Student
+     */
     private List<Student> students = new ArrayList<>();
+    /**
+     * Edittext view for search input
+     */
     private EditText search;
+    /**
+     * User list adapter object
+     */
     private UserlistAdapter userlistAdapter;
+    /**
+     * back btn imageview
+     */
     private ImageView back;
+    /**
+     * Layout view
+     */
     private LinearLayout noresult;
 
 
+    /**
+     * activity oncreate method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

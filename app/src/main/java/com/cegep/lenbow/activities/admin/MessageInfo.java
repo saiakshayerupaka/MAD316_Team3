@@ -34,10 +34,28 @@ import java.util.Date;
 
 public class MessageInfo extends AppCompatActivity {
 
+    /**
+     * Text view for Message Title, StudentId, Issue Type, Message body , created On
+     */
+
     private TextView messageTitle,studentId,issueType,message,createdOn;
+    /**
+     * back button imageview
+     */
     private ImageView backbtn;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * Simple date formate object
+     */
     private SimpleDateFormat df;
+
+    /**
+     * activity oncreate method
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

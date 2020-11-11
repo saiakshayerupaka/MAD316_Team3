@@ -26,6 +26,7 @@ import java.util.List;
 
 /**
  * Inbox Activity
+ *
  * @author dipmal lakhani
  * @author Sai Akshay
  * @author Gopichand
@@ -38,13 +39,35 @@ import java.util.List;
 
 public class MessageList extends AppCompatActivity {
 
+    /**
+     * list view for messages
+     */
     private ListView listView;
+    /**
+     * Edittext view for search
+     */
     private EditText search;
+    /**
+     * back button view
+     */
     private ImageView backbtn;
+    /**
+     * List of Message
+     */
     private List<Message> messages = new ArrayList<>();
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * Message list adapter object
+     */
     private MessagelistAdapter messagelistAdapter;
 
+    /**
+     * activity oncreate method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,27 +108,25 @@ public class MessageList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 messages.clear();
-                for(DataSnapshot snap : snapshot.getChildren()){
+                for (DataSnapshot snap : snapshot.getChildren()) {
                     Message msg = snap.getValue(Message.class);
                     msg.setMessageId(snap.getKey());
                     messages.add(msg);
                 }
 
 
-
-                messagelistAdapter = new MessagelistAdapter(messages,MessageList.this);
+                messagelistAdapter = new MessagelistAdapter(messages, MessageList.this);
                 listView.setAdapter(messagelistAdapter);
 
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(MessageList.this,MessageInfo.class);
-                        intent.putExtra("data",messagelistAdapter.getItem(position));
+                        Intent intent = new Intent(MessageList.this, MessageInfo.class);
+                        intent.putExtra("data", messagelistAdapter.getItem(position));
                         startActivity(intent);
                     }
                 });
-
 
 
             }

@@ -114,7 +114,9 @@ public class UpdateItem extends AppCompatActivity {
                 upload();
             }
         });
-
+        /**
+         * this method is used to update the item details i.e.,attributes
+         */
 
         updateItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,9 +143,7 @@ public class UpdateItem extends AppCompatActivity {
             }
         });
     }
-    /**
-     * this method is used to uptate the item details i.e.,attributes
-     */
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -177,6 +177,9 @@ public class UpdateItem extends AppCompatActivity {
     }
 
 
+    /**
+     * this method is used to upload item image
+     */
 
     private void uploadImage(Uri filePath) {
 
@@ -222,8 +225,5 @@ public class UpdateItem extends AppCompatActivity {
                         });
 
     }
-    /**
-     * this method is used to upload item image
-     */
 
 }
