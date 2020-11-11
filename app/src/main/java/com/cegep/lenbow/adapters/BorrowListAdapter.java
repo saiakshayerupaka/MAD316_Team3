@@ -34,18 +34,39 @@ import java.util.List;
 
 /**
  * Borrowed item list adapter
- * @author dipmal lakhani
+ * @author dipmal lakhani @author prashant reddy nannuru
  */
 
 
 public class BorrowListAdapter extends BaseAdapter implements Filterable {
 
+    /**
+     * list originalreserve attribute
+     */
     private List<Reserve> originalreserve;
+    /**
+     * list filteredreserve attribute
+     */
     private List<Reserve> filteredreserve;
+    /**
+     * Context object
+     */
     private Context mContext;
+    /**
+     * Firebase storage object
+     */
     private FirebaseStorage firebaseStorage;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase firebaseDatabase;
+    /**
+     * dateformat object
+     */
     private DateFormat df;
+    /**
+     * mfilter object is created
+     */
     private ItemFilter mFilter = new ItemFilter();
 
 
@@ -132,6 +153,7 @@ public class BorrowListAdapter extends BaseAdapter implements Filterable {
 
 
         firebaseDatabase.getReference().child("Items").child(filteredreserve.get(position).getItemId()).addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Item item = snapshot.getValue(Item.class);
@@ -143,7 +165,9 @@ public class BorrowListAdapter extends BaseAdapter implements Filterable {
                     }
                 });
             }
-
+            /**
+             * This method displays Database error when data cannot be fetched from database
+             */
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

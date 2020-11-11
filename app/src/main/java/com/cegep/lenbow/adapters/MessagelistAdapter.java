@@ -24,16 +24,31 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Message list adapter
- * @author dipmal lakhani
+ * @author dipmal lakhani @author prashant reddy nannuru
  */
 
 
 public class MessagelistAdapter extends BaseAdapter implements Filterable {
 
+    /**
+     * list originalmessages attribute
+     */
     private List<Message> originalmessages;
+    /**
+     * list filteredmessages attribute
+     */
     private List<Message> filteredmessages;
+    /**
+     * Context object
+     */
     private Context mContext;
+    /**
+     * Firebase database object
+     */
     private FirebaseDatabase database;
+    /**
+     * mfilter object is created
+     */
     private ItemFilter mFilter = new ItemFilter();
 
 
@@ -43,7 +58,9 @@ public class MessagelistAdapter extends BaseAdapter implements Filterable {
         this.mContext = mContext;
         database = FirebaseDatabase.getInstance();
     }
-
+    /**
+     * This method gets the count of filteredmessages
+     */
     @Override
     public int getCount() {
         return filteredmessages.size();
@@ -82,12 +99,17 @@ public class MessagelistAdapter extends BaseAdapter implements Filterable {
         }
 
         database.getReference().child("Users").child(filteredmessages.get(position).getMessageBy()).addListenerForSingleValueEvent(new ValueEventListener() {
+            /**
+             * This method gets the users messages
+             */
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 studentId.setText(snapshot.getValue(Student.class).getStudentId());
                 filteredmessages.get(position).setStudentId(snapshot.getValue(Student.class).getStudentId());
             }
-
+            /**
+             * This method diplays database error when not able to fetch data
+             */
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -104,6 +126,9 @@ public class MessagelistAdapter extends BaseAdapter implements Filterable {
         return mFilter;
     }
     private class ItemFilter extends Filter {
+        /**
+         * This method performs filtering
+         */
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
 
@@ -132,6 +157,9 @@ public class MessagelistAdapter extends BaseAdapter implements Filterable {
         }
 
         @SuppressWarnings("unchecked")
+        /**
+         * This method displays filtered results
+         */
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             filteredmessages = (ArrayList<Message>) results.values;
