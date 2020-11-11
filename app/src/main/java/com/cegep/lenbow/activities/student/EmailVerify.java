@@ -12,15 +12,26 @@ import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Email Verify activity
- * @author dipmal lakhani
+ * @author Sanjeev yerramsetty
  */
 
 public class EmailVerify extends AppCompatActivity {
 
+
+    /**
+     * EmailVerify resend button attribute
+     */
     public Button resend;
+    /**
+     * FirebaseAuth authentication variable
+     */
     private FirebaseAuth auth;
 
 
+    /**
+     * activity on create method
+     * @param EmailVerify
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

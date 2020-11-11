@@ -24,14 +24,23 @@ import com.google.firebase.database.ValueEventListener;
 
 /**
  * Student Login activity
- * @author dipmal lakhani
+ * @author sanjeev yerramsetty
  */
 
 public class StudentLogin extends AppCompatActivity {
-
+    /**
+     * StudentLogin back ImageView attribute
+     */
     private ImageView backbtn;
     private FirebaseAuth mAuth;
+    /**
+     * StudentLogin emailInput EditText attribute
+     * StudentLogin passInput EditText attribute
+     */
     private EditText emailInput, passInput;
+    /**
+     * StudentLogin studentLogin Button attribute
+     */
     private Button studentLogin;
     private FirebaseDatabase database;
 

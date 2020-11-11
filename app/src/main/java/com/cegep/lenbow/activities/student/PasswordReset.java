@@ -17,12 +17,28 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 
 public class PasswordReset extends AppCompatActivity {
-
+    /**
+     * PasswordReset password EditText attribute
+     * PasswordReset confirmpass EditText attribute
+     */
     private EditText pass,confirmpass;
+    /**
+     * PasswordReset reset Button attribute
+     */
     private Button reset;
+    /**
+     * PasswordReset back Button attribute
+     */
     private ImageView back;
+    /**
+     * FirebaseAuth authentication variable
+     */
     private FirebaseAuth auth;
 
+    /**
+     * activity on create method
+     * @param PasswordReset
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

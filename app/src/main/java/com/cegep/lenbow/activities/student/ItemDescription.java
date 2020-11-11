@@ -25,14 +25,35 @@ import java.util.Date;
 
 public class  ItemDescription extends AppCompatActivity {
 
+    /**
+     * ItemDescription ItemName TextView attribute
+     */
     private TextView ItemName;
+    /**
+     * It contains description of the product displayed
+     */
     private TextView ItemDes;
     private TextView ItemType;
+    /**
+     * It contains Item updated date of the product displayed
+     */
     private TextView ItemUpdatedOn;
+    /**
+     * ItemDescription Reserve button attribute
+     */
     private Button Reserve;
+    /**
+     * ItemDescription Itemimg ImageView attribute
+     */
     private ImageView Itemimg;
     private FirebaseStorage firebaseStorage;
+    /**
+     * ItemDescription backbutton button attribute
+     */
     private ImageView backbtn;
+    /**
+     * Used to format the date in required format
+     */
     private SimpleDateFormat df;
 
 

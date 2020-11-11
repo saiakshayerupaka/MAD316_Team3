@@ -44,17 +44,40 @@ import com.cegep.lenbow.models.*;
  */
 
 public class Reservation extends AppCompatActivity {
-
+    /**
+     * Reservation calendar CalendarPickerView attribute
+     */
     private CalendarPickerView calendar;
+    /**
+     * Reservation borrow date TextView attribute
+     * Reservation return date TextView attribute
+     */
     private TextView borrowdate,returndate;
     private FirebaseDatabase database;
     private FirebaseAuth auth;
+    /**
+     * Used to format the date in required format
+     */
     private DateFormat df;
+    /**
+     * ItemDescription backbutton button attribute
+     */
     private ImageView backbtn;
+    /**
+     * Used to display notification
+     */
     private AlertDialog.Builder builder1;
+    /**
+     * this lst contains all dates when the product is borrowed
+     */
     private List<Date> borrowdates = new ArrayList<>();
-
+    /**
+     * ItemDescription reserve button attribute
+     */
     private Button reserve;
+    /*
+    * contains details of the Item
+     */
     private Item item;
 
 
@@ -212,6 +235,11 @@ dialog.dismiss();
 // add subtitles to the dates pass a arrayList of SubTitle objects with date and text
     }
 
+    /**
+     *
+     * @param dates
+     * @return List of converted dates in timestamp
+     */
     private List<Long> convertDatestoTimestamp(List<Date> dates){
 
        ListIterator<Date> iterator = dates.listIterator();
@@ -229,6 +257,11 @@ dialog.dismiss();
 
     }
 
+    /**
+     *
+     * @param dates in timestamp
+     * @return list of dates converted from timestamp
+     */
     private List<Date> convertTimestamptoDates(List<Long> dates){
         Collections.sort(dates);
         ListIterator<Long> iterator = dates.listIterator();
@@ -246,6 +279,9 @@ dialog.dismiss();
 
     }
 
+    /**
+     * This method is executed when the item is to be reserved
+     */
     private void makeReserve(){
         if(calendar.getSelectedDates().size()>1){
 
@@ -269,6 +305,9 @@ dialog.dismiss();
         }
     }
 
+    /**
+     * this method is called to check if the user has made reservation of the item more then 2 times.
+     */
     private boolean checkMonths(Date dd){
         int count =0;
         if(borrowdates.size()!=0){
